@@ -20,7 +20,7 @@ export default function FAQs() {
     {
       id: 'item-3',
       question: 'How do I know if someone is verified?',
-      answer: 'All profiles undergo our verification process, which includes photo verification and optional background checks. Verified users display a special badge, and you can see their verification status on their profile. This helps ensure you\'re connecting with real, genuine people.',
+      answer: 'All profiles undergo our verification process, which includes photo verification and optional background checks. Verified users display a special badge, and you can see their verification status on their profile. This helps ensure you&apos;re connecting with real, genuine people.',
     },
     {
       id: 'item-4',

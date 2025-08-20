@@ -1,6 +1,6 @@
 "use client";
 
-import { MoveDownLeft, MoveUpRight } from "lucide-react";
+import { MoveUpRight } from "lucide-react";
 import { useEffect, useState, useRef } from "react";
 
 function Stats() {
@@ -57,7 +57,7 @@ function Stats() {
         
         requestAnimationFrame(animate);
       }
-    }, [isVisible, target, duration, hasAnimated]);
+    }, [target, duration, hasAnimated]);
 
     const formatNumber = (num: number) => {
       if (num >= 1000000) {
