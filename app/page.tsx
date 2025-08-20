@@ -1,7 +1,6 @@
 import { Hero } from "@/components/ui/hero-with-group-of-images-text-and-two-buttons";
 import { Logos3 } from "@/components/logos3";
 import { Feature108 } from "@/components/shadcnblocks-com-feature108";
-import TwitterReviews from "@/components/TwitterReviews";
 
 export default function Home() {
   return (
@@ -94,7 +93,6 @@ export default function Home() {
           },
         ]}
       />
-      <TwitterReviews />
     </div>
   );
 }
