@@ -1,15 +1,16 @@
 import { Button } from "@/components/ui/button";
+import { useState, useEffect } from "react";
 
 interface Feature2Props {
-  title: string;
+  title?: string;
   description?: string;
   imageSrc: string;
   imageAlt: string;
-  buttonPrimary: {
+  buttonPrimary?: {
     label: string;
     href: string;
   };
-  buttonSecondary: {
+  buttonSecondary?: {
     label: string;
     href: string;
   };
@@ -29,34 +30,43 @@ export const Feature2 = ({
     href: "https://shadcnblocks.com",
   },
 }: Feature2Props) => {
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    setIsVisible(true);
+  }, []);
+
   return (
-    <section className="py-16 md:py-24 lg:py-32">
+    <section className="pt-8 pb-4 md:pt-16 md:pb-8">
       <div className="container mx-auto px-4 md:px-6">
-        <div className="flex flex-col items-center text-center max-w-4xl mx-auto">
-          <img
-            src={imageSrc}
-            alt={imageAlt}
-            className="w-full max-w-2xl rounded-lg object-cover shadow-lg mb-8 md:mb-12"
-          />
-          <div className="flex flex-col items-center text-center">
-            <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-balance mb-6 md:mb-8">
-              {title}
+        <div className={`flex flex-col items-center text-center max-w-4xl mx-auto transition-all duration-700 delay-100 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+          {/* Top Badge */}
+          <div className={`mb-4 md:mb-6 transition-all duration-700 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+            <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200">
+              📺 Watch us on Good Morning America
+            </span>
+          </div>
+          
+          <div className={`transition-all duration-700 delay-300 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+            <img
+              src={imageSrc}
+              alt={imageAlt}
+              className="w-full max-w-2xl rounded-lg object-cover shadow-lg mb-8 md:mb-12"
+            />
+          </div>
+          <div className={`flex flex-col items-center text-center transition-all duration-700 delay-400 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl tracking-tighter font-bold mb-6 md:mb-8 leading-tight">
+              It really is that legit
             </h1>
-            <p className="mb-8 md:mb-10 max-w-2xl text-muted-foreground text-base md:text-lg leading-relaxed">
-              {description}
+            <p className="mb-4 max-w-2xl text-muted-foreground text-base sm:text-lg md:text-xl leading-relaxed tracking-tight">
+              A 2025 survey reported that approximately 65.3% of Tinder users identified as being in a relationship or married.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button asChild size="lg" className="px-8 py-3">
-                <a href={buttonPrimary.href} target="_blank">
-                  {buttonPrimary.label}
-                </a>
-              </Button>
-              <Button variant="outline" asChild size="lg" className="px-8 py-3">
-                <a href={buttonSecondary.href} target="_blank">
-                  {buttonSecondary.label}
-                </a>
-              </Button>
-            </div>
+            <p className="mb-2 text-sm text-muted-foreground/70 italic">
+              –New York Post
+            </p>
+            <p className="mb-8 md:mb-10 max-w-2xl text-muted-foreground text-base sm:text-lg md:text-xl leading-relaxed tracking-tight">
+              (luckily our AI-powered platform helps you discover the truth)
+            </p>
           </div>
         </div>
       </div>

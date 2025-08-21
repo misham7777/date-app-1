@@ -1,5 +1,6 @@
+"use client";
+
 import { Hero } from "@/components/ui/hero-with-group-of-images-text-and-two-buttons";
-import { Logos3 } from "@/components/logos3";
 import { Feature108 } from "@/components/shadcnblocks-com-feature108";
 import { Marquee } from "@/components/ui/marquee";
 import { Feature197 } from "@/components/accordion-feature-section";
@@ -7,168 +8,135 @@ import { FeaturesSectionWithHoverEffects } from "@/components/feature-section-wi
 import { Stats } from "@/components/ui/stats-section";
 import { Feature2 } from "@/components/feature-2";
 import FAQs from "@/components/text-reveal-faqs";
+import FooterSection from "@/components/footer";
+import { AnimatedSection } from "@/components/ui/animated-section";
+import { StickyEmailInput } from "@/components/ui/sticky-email-input";
 
 export default function Home() {
+
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen w-full overflow-x-hidden pb-32">
+      <StickyEmailInput />
       <Hero />
-      <Logos3 
-        heading="Trusted by industry leaders"
-        logos={[
-          {
-            id: "logo-1",
-            description: "Tinder",
-            image: "https://upload.wikimedia.org/wikipedia/commons/7/74/Tinder_Logo.png",
-            className: "h-8 w-auto",
-          },
-          {
-            id: "logo-2", 
-            description: "Bumble",
-            image: "https://upload.wikimedia.org/wikipedia/commons/9/9c/Bumble_logo.svg",
-            className: "h-8 w-auto",
-          },
-          {
-            id: "logo-3",
-            description: "Hinge",
-            image: "https://logos-world.net/wp-content/uploads/2021/03/Hinge-Logo.png",
-            className: "h-8 w-auto",
-          },
-          {
-            id: "logo-4",
-            description: "Match",
-            image: "https://upload.wikimedia.org/wikipedia/commons/0/0c/Match.com_logo.svg",
-            className: "h-8 w-auto",
-          },
-          {
-            id: "logo-5",
-            description: "OkCupid",
-            image: "https://logos-world.net/wp-content/uploads/2021/03/OkCupid-Logo.png",
-            className: "h-8 w-auto",
-          },
-          {
-            id: "logo-6",
-            description: "Badoo",
-            image: "https://upload.wikimedia.org/wikipedia/commons/8/85/Badoo_logo.svg",
-            className: "h-8 w-auto",
-          },
-        ]}
-      />
-      <Feature108 
-        badge="Dating App Analytics"
-        heading="Advanced Features for Modern Dating Apps"
-        description="Transform your dating platform with cutting-edge analytics and user insights."
-        tabs={[
-          {
-            value: "analytics",
-            icon: <span>📊</span>,
-            label: "Smart Analytics",
-            content: {
-              badge: "Data Insights",
-              title: "Understand your users like never before.",
-              description: "Get deep insights into user behavior, match success rates, and engagement patterns. Make data-driven decisions to improve your platform.",
-              buttonText: "View Analytics",
-              imageSrc: "/hero-images/profile-1.png",
-              imageAlt: "Analytics dashboard",
+      <AnimatedSection animationType="fade-up" delay={200}>
+        <Feature108 
+          badge="Relationship Intelligence"
+          heading="Advanced Features for Complete Relationship Transparency"
+          description="Uncover the truth about your partner's online activity with AI-powered multi-platform monitoring and facial recognition technology."
+          tabs={[
+            {
+              value: "analytics",
+              icon: <span>📊</span>,
+              label: "Multi-Platform Scan",
+              content: {
+                badge: "Complete Coverage",
+                title: "Discover their digital footprint like never before.",
+                description: "Find out if their account is still active, including the last time and location they used dating platforms. Get real proof of their online dating activity with timestamps and location data.",
+                buttonText: "Start Investigation",
+                imageSrc: "/hero-images/profile-1.png",
+                imageAlt: "Multi-platform scanning interface",
+              },
             },
-          },
-          {
-            value: "matching",
-            icon: <span>💝</span>,
-            label: "AI Matching",
-            content: {
-              badge: "Smart Connections",
-              title: "Next-gen matching algorithms.",
-              description: "Our AI-powered matching system learns from user preferences and behaviors to create more meaningful connections and higher success rates.",
-              buttonText: "Learn More",
-              imageSrc: "/hero-images/profile-2.png",
-              imageAlt: "AI matching interface",
+            {
+              value: "matching",
+              icon: <span>❤️</span>,
+              label: "Activity Tracking",
+              content: {
+                badge: "Activity Intelligence",
+                title: "See when and where they're active on dating apps.",
+                description: "Find out if their account is still active, including the last time and location they used dating platforms. Get real proof of their online dating activity with timestamps and location data.",
+                buttonText: "Start Investigation",
+                imageSrc: "/hero-images/profile-2.png",
+                imageAlt: "AI facial recognition interface",
+              },
             },
-          },
-          {
-            value: "location",
-            icon: <span>📍</span>,
-            label: "Location Intelligence",
-            content: {
-              badge: "Geo Features",
-              title: "Location-based smart features.",
-              description: "Advanced location tracking and geo-fencing capabilities help users find matches nearby and discover dating hotspots in their area.",
-              buttonText: "Explore Features",
-              imageSrc: "/hero-images/map-interface.png",
-              imageAlt: "Location tracking interface",
+            {
+              value: "location",
+              icon: <span>📍</span>,
+              label: "AI Facial Recognition",
+              content: {
+                badge: "Activity Intelligence",
+                title: "Upload any photo to find their hidden profiles.",
+                description: "Our AI scans their face across 50+ dating platforms to find matching profiles, even when they use fake names or different photos. Get complete results in minutes.",
+                buttonText: "Start Investigation",
+                imageSrc: "/hero-images/map-interface.png",
+                imageAlt: "Activity tracking interface",
+              },
             },
-          },
-        ]}
-      />
+          ]}
+        />
+      </AnimatedSection>
       
       {/* Marquee Section - Vertical on Mobile, Horizontal on Desktop */}
-      <section className="py-16 md:py-24 bg-gradient-to-r from-purple-50 to-pink-50 dark:from-purple-950/20 dark:to-pink-950/20">
-        <div className="container mx-auto px-4 md:px-6">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              What Our Users Say
-            </h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Real testimonials from people who found love through our platform
-            </p>
-          </div>
+      <AnimatedSection animationType="fade-up" delay={100}>
+        <section className="pt-8 pb-4 md:pt-16 md:pb-8">
+          <div className="container mx-auto px-4 md:px-6">
+            <div className="text-center mb-4">
+              <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl tracking-tighter font-bold mb-4 leading-tight">
+                Trust, But Verify
+              </h2>
+              <p className="text-base sm:text-lg md:text-xl leading-relaxed tracking-tight text-muted-foreground max-w-2xl mx-auto">
+                Smart people who chose to verify rather than wonder
+              </p>
+            </div>
           
           {/* Mobile: Vertical Marquee */}
           <div className="block md:hidden">
             <Marquee
               vertical={true}
               pauseOnHover={true}
-              className="h-96 [--duration:30s]"
+              className="h-64 [--duration:30s]"
             >
-              <div className="bg-white dark:bg-gray-800 rounded-lg p-6 shadow-lg mx-4 mb-4 max-w-sm">
-                <div className="flex items-center mb-4">
-                  <div className="w-12 h-12 bg-gradient-to-br from-pink-400 to-purple-500 rounded-full flex items-center justify-center text-white font-bold text-lg mr-3">
+              <div className="bg-white rounded-2xl p-3 md:p-6 shadow-sm mx-auto max-w-sm hover:scale-105 transition-transform duration-300">
+                <div className="flex items-center mb-2 md:mb-4">
+                  <div className="w-10 h-10 md:w-12 md:h-12 bg-pink-500 rounded-full flex items-center justify-center text-white font-bold text-base md:text-lg mr-2 md:mr-3">
                     S
                   </div>
                   <div>
-                    <h4 className="font-semibold">Sarah M.</h4>
-                    <p className="text-sm text-muted-foreground">Found love in 2 weeks</p>
+                    <h4 className="font-semibold text-gray-900 text-sm md:text-base">Sarah M.</h4>
+                    <p className="text-xs md:text-sm text-muted-foreground">Verified suspicions</p>
                   </div>
                 </div>
-                <p className="text-gray-700 dark:text-gray-300">"This app changed my life! I met my soulmate and we're getting married next month!"</p>
+                <p className="text-gray-700 text-sm md:text-base">&ldquo;Had a feeling something was off. Better to know for certain than live with doubt. Now I can make informed decisions.&rdquo;</p>
               </div>
               
-              <div className="bg-white dark:bg-gray-800 rounded-lg p-6 shadow-lg mx-4 mb-4 max-w-sm">
-                <div className="flex items-center mb-4">
-                  <div className="w-12 h-12 bg-gradient-to-br from-blue-400 to-cyan-500 rounded-full flex items-center justify-center text-white font-bold text-lg mr-3">
+              <div className="bg-white rounded-2xl p-3 md:p-6 shadow-sm mx-auto max-w-sm hover:scale-105 transition-transform duration-300">
+                <div className="flex items-center mb-2 md:mb-4">
+                  <div className="w-10 h-10 md:w-12 md:h-12 bg-blue-500 rounded-full flex items-center justify-center text-white font-bold text-base md:text-lg mr-2 md:mr-3">
                     M
                   </div>
                   <div>
-                    <h4 className="font-semibold">Mike R.</h4>
-                    <p className="text-sm text-muted-foreground">Verified user</p>
+                    <h4 className="font-semibold text-gray-900 text-sm md:text-base">Mike R.</h4>
+                    <p className="text-xs md:text-sm text-muted-foreground">Due diligence</p>
                   </div>
                 </div>
-                <p className="text-gray-700 dark:text-gray-300">"The AI matching is incredible. I've never felt so compatible with someone before!"</p>
+                <p className="text-gray-700 text-sm md:text-base">&ldquo;Trust is important, but verification is smart. Found exactly what I suspected. Knowledge is power.&rdquo;</p>
               </div>
               
-              <div className="bg-white dark:bg-gray-800 rounded-lg p-6 shadow-lg mx-4 mb-4 max-w-sm">
-                <div className="flex items-center mb-4">
-                  <div className="w-12 h-12 bg-gradient-to-br from-green-400 to-emerald-500 rounded-full flex items-center justify-center text-white font-bold text-lg mr-3">
+              <div className="bg-white rounded-2xl p-3 md:p-6 shadow-sm mx-auto max-w-sm hover:scale-105 transition-transform duration-300">
+                <div className="flex items-center mb-2 md:mb-4">
+                  <div className="w-10 h-10 md:w-12 md:h-12 bg-green-500 rounded-full flex items-center justify-center text-white font-bold text-base md:text-lg mr-2 md:mr-3">
                     L
                   </div>
                   <div>
-                    <h4 className="font-semibold">Lisa K.</h4>
-                    <p className="text-sm text-muted-foreground">Premium member</p>
+                    <h4 className="font-semibold text-gray-900 text-sm md:text-base">Lisa K.</h4>
+                    <p className="text-xs md:text-sm text-muted-foreground">Peace of mind</p>
                   </div>
                 </div>
-                <p className="text-gray-700 dark:text-gray-300">"Finally found someone who shares my values and interests. Thank you!"</p>
+                <p className="text-gray-700 text-sm md:text-base">&ldquo;Sometimes your gut is right. Quick search confirmed my instincts. No drama, just facts.&rdquo;</p>
               </div>
               
-              <div className="bg-white dark:bg-gray-800 rounded-lg p-6 shadow-lg mx-4 mb-4 max-w-sm">
-                <div className="flex items-center mb-4">
-                  <div className="w-12 h-12 bg-gradient-to-br from-orange-400 to-red-500 rounded-full flex items-center justify-center text-white font-bold text-lg mr-3">
+              <div className="bg-white rounded-2xl p-3 md:p-6 shadow-sm mx-auto max-w-sm hover:scale-105 transition-transform duration-300">
+                <div className="flex items-center mb-2 md:mb-4">
+                  <div className="w-10 h-10 md:w-12 md:h-12 bg-orange-500 rounded-full flex items-center justify-center text-white font-bold text-base md:text-lg mr-2 md:mr-3">
                     D
                   </div>
                   <div>
-                    <h4 className="font-semibold">David P.</h4>
-                    <p className="text-sm text-muted-foreground">Active user</p>
+                    <h4 className="font-semibold text-gray-900 text-sm md:text-base">David P.</h4>
+                    <p className="text-xs md:text-sm text-muted-foreground">Confirmed doubts</p>
                   </div>
                 </div>
-                <p className="text-gray-700 dark:text-gray-300">"The location features helped me find someone nearby. We're moving in together!"</p>
+                <p className="text-gray-700 text-sm md:text-base">&ldquo;She said she deleted all dating apps. Found 4 active profiles. Facts don&apos;t lie.&rdquo;</p>
               </div>
             </Marquee>
           </div>
@@ -177,133 +145,138 @@ export default function Home() {
           <div className="hidden md:block">
             <Marquee
               pauseOnHover={true}
-              className="py-8 [--duration:40s]"
+              className="py-4 [--duration:40s]"
             >
-              <div className="bg-white dark:bg-gray-800 rounded-lg p-6 shadow-lg mx-4 min-w-[300px]">
+              <div className="bg-white rounded-2xl p-6 shadow-sm mx-4 min-w-[300px] hover:scale-105 transition-transform duration-300">
                 <div className="flex items-center mb-4">
-                  <div className="w-12 h-12 bg-gradient-to-br from-pink-400 to-purple-500 rounded-full flex items-center justify-center text-white font-bold text-lg mr-3">
+                  <div className="w-12 h-12 bg-pink-500 rounded-full flex items-center justify-center text-white font-bold text-lg mr-3">
                     S
                   </div>
                   <div>
-                    <h4 className="font-semibold">Sarah M.</h4>
-                    <p className="text-sm text-muted-foreground">Found love in 2 weeks</p>
+                    <h4 className="font-semibold text-gray-900">Sarah M.</h4>
+                    <p className="text-sm text-muted-foreground">Verified suspicions</p>
                   </div>
                 </div>
-                <p className="text-gray-700 dark:text-gray-300">"This app changed my life! I met my soulmate and we're getting married next month!"</p>
+                <p className="text-gray-700">&ldquo;Had a feeling something was off. Better to know for certain than live with doubt. Now I can make informed decisions.&rdquo;</p>
               </div>
               
-              <div className="bg-white dark:bg-gray-800 rounded-lg p-6 shadow-lg mx-4 min-w-[300px]">
+              <div className="bg-white rounded-2xl p-6 shadow-sm mx-4 min-w-[300px] hover:scale-105 transition-transform duration-300">
                 <div className="flex items-center mb-4">
-                  <div className="w-12 h-12 bg-gradient-to-br from-blue-400 to-cyan-500 rounded-full flex items-center justify-center text-white font-bold text-lg mr-3">
+                  <div className="w-12 h-12 bg-blue-500 rounded-full flex items-center justify-center text-white font-bold text-lg mr-3">
                     M
                   </div>
                   <div>
-                    <h4 className="font-semibold">Mike R.</h4>
-                    <p className="text-sm text-muted-foreground">Verified user</p>
+                    <h4 className="font-semibold text-gray-900">Mike R.</h4>
+                    <p className="text-sm text-muted-foreground">Due diligence</p>
                   </div>
                 </div>
-                <p className="text-gray-700 dark:text-gray-300">"The AI matching is incredible. I've never felt so compatible with someone before!"</p>
+                <p className="text-gray-700">&ldquo;Trust is important, but verification is smart. Found exactly what I suspected. Knowledge is power.&rdquo;</p>
               </div>
               
-              <div className="bg-white dark:bg-gray-800 rounded-lg p-6 shadow-lg mx-4 min-w-[300px]">
+              <div className="bg-white rounded-2xl p-6 shadow-sm mx-4 min-w-[300px] hover:scale-105 transition-transform duration-300">
                 <div className="flex items-center mb-4">
-                  <div className="w-12 h-12 bg-gradient-to-br from-green-400 to-emerald-500 rounded-full flex items-center justify-center text-white font-bold text-lg mr-3">
+                  <div className="w-12 h-12 bg-green-500 rounded-full flex items-center justify-center text-white font-bold text-lg mr-3">
                     L
                   </div>
                   <div>
-                    <h4 className="font-semibold">Lisa K.</h4>
-                    <p className="text-sm text-muted-foreground">Premium member</p>
+                    <h4 className="font-semibold text-gray-900">Lisa K.</h4>
+                    <p className="text-sm text-muted-foreground">Peace of mind</p>
                   </div>
                 </div>
-                <p className="text-gray-700 dark:text-gray-300">"Finally found someone who shares my values and interests. Thank you!"</p>
+                <p className="text-gray-700">&ldquo;Sometimes your gut is right. Quick search confirmed my instincts. No drama, just facts.&rdquo;</p>
               </div>
               
-              <div className="bg-white dark:bg-gray-800 rounded-lg p-6 shadow-lg mx-4 min-w-[300px]">
+              <div className="bg-white rounded-2xl p-6 shadow-sm mx-4 min-w-[300px] hover:scale-105 transition-transform duration-300">
                 <div className="flex items-center mb-4">
-                  <div className="w-12 h-12 bg-gradient-to-br from-orange-400 to-red-500 rounded-full flex items-center justify-center text-white font-bold text-lg mr-3">
+                  <div className="w-12 h-12 bg-orange-500 rounded-full flex items-center justify-center text-white font-bold text-lg mr-3">
                     D
                   </div>
                   <div>
-                    <h4 className="font-semibold">David P.</h4>
-                    <p className="text-sm text-muted-foreground">Active user</p>
+                    <h4 className="font-semibold text-gray-900">David P.</h4>
+                    <p className="text-sm text-muted-foreground">Confirmed doubts</p>
                   </div>
                 </div>
-                <p className="text-gray-700 dark:text-gray-300">"The location features helped me find someone nearby. We're moving in together!"</p>
+                <p className="text-gray-700">&ldquo;She said she deleted all dating apps. Found 4 active profiles. Facts don&apos;t lie.&rdquo;</p>
               </div>
               
-              <div className="bg-white dark:bg-gray-800 rounded-lg p-6 shadow-lg mx-4 min-w-[300px]">
+              <div className="bg-white rounded-2xl p-6 shadow-sm mx-4 min-w-[300px] hover:scale-105 transition-transform duration-300">
                 <div className="flex items-center mb-4">
-                  <div className="w-12 h-12 bg-gradient-to-br from-indigo-400 to-purple-500 rounded-full flex items-center justify-center text-white font-bold text-lg mr-3">
+                  <div className="w-12 h-12 bg-indigo-500 rounded-full flex items-center justify-center text-white font-bold text-lg mr-3">
                     A
                   </div>
                   <div>
-                    <h4 className="font-semibold">Alex T.</h4>
+                    <h4 className="font-semibold text-gray-900">Alex T.</h4>
                     <p className="text-sm text-muted-foreground">New user</p>
                   </div>
                 </div>
-                <p className="text-gray-700 dark:text-gray-300">"Amazing experience! The interface is so intuitive and the matches are spot on."</p>
+                <p className="text-gray-700">&ldquo;Amazing experience! The interface is so intuitive and the matches are spot on.&rdquo;</p>
               </div>
               
-              <div className="bg-white dark:bg-gray-800 rounded-lg p-6 shadow-lg mx-4 min-w-[300px]">
+              <div className="bg-white rounded-2xl p-6 shadow-sm mx-4 min-w-[300px] hover:scale-105 transition-transform duration-300">
                 <div className="flex items-center mb-4">
-                  <div className="w-12 h-12 bg-gradient-to-br from-teal-400 to-blue-500 rounded-full flex items-center justify-center text-white font-bold text-lg mr-3">
+                  <div className="w-12 h-12 bg-teal-500 rounded-full flex items-center justify-center text-white font-bold text-lg mr-3">
                     E
                   </div>
                   <div>
-                    <h4 className="font-semibold">Emma W.</h4>
+                    <h4 className="font-semibold text-gray-900">Emma W.</h4>
                     <p className="text-sm text-muted-foreground">Long-term user</p>
                   </div>
                 </div>
-                <p className="text-gray-700 dark:text-gray-300">"Been using this for 6 months and finally found my perfect match. Highly recommend!"</p>
+                <p className="text-gray-700">&ldquo;Been using this for 6 months and finally found my perfect match. Highly recommend!&rdquo;</p>
               </div>
             </Marquee>
           </div>
         </div>
       </section>
+      </AnimatedSection>
       
-      <Feature197 
-        features={[
-          {
-            id: 1,
-            title: "Natural Connection Discovery",
-            image: "/tHzBF9VtTHyDQVb6yHGsTjVms.avif",
-            description: "Just like trees that grow together in harmony, our platform helps you discover natural connections with people who share your values and interests. Our AI analyzes compatibility patterns to find relationships that flourish naturally over time.",
-          },
-          {
-            id: 2,
-            title: "Rooted in Trust & Safety",
-            image: "/zS8PvTIANwCEPMbE5AiFHxFqbI8.avif",
-            description: "Strong relationships, like healthy trees, need solid foundations. Our comprehensive verification system and safety features provide the secure environment you need to build lasting connections with confidence and peace of mind.",
-          },
-          {
-            id: 3,
-            title: "Growing Together",
-            image: "/tHzBF9VtTHyDQVb6yHGsTjVms.avif",
-            description: "Every great relationship grows and evolves, just like a flourishing forest. Our platform provides the tools and insights you need to nurture your connections, overcome challenges, and build relationships that stand the test of time.",
-          },
-        ]}
-      />
+      <AnimatedSection animationType="slide-up" delay={300}>
+        <Feature197 
+          features={[
+            {
+              id: 1,
+              title: "Location & Time Tracking",
+              image: "/tHzBF9VtTHyDQVb6yHGsTjVms.avif",
+              description: "Just like the map shows activity from 2 days ago, our platform captures real-time location data when your partner uses dating apps. Our AI analyzes their movement patterns, timestamps, and geographic activity to provide concrete evidence of their online dating behavior.",
+            },
+            {
+              id: 2,
+              title: "Active Profile Detection",
+              image: "/zS8PvTIANwCEPMbE5AiFHxFqbI8.avif",
+              description: "Our AI facial recognition technology instantly identifies active dating profiles, just like finding Mandy's profile that was active 8 hours ago. Get real-time alerts when we discover their hidden accounts with exact timestamps, locations, and profile details.",
+            },
+            {
+              id: 3,
+              title: "Subscription Level Detection",
+              image: "/3ab3Z01bd2hmmiDPvu2ESnFp1YA.avif",
+              description: "Discover exactly how invested they are in dating apps. Our system detects whether they're using free accounts or paying for premium features like Tinder Platinum, Gold, or Plus subscriptions. Premium subscriptions indicate serious dating intentions and higher activity levels.",
+            },
+          ]}
+        />
+      </AnimatedSection>
       
-      <FeaturesSectionWithHoverEffects />
+      <AnimatedSection animationType="fade-up" delay={200}>
+        <FeaturesSectionWithHoverEffects />
+      </AnimatedSection>
       
-      <Stats />
+      <AnimatedSection animationType="scale-in" delay={100}>
+        <Stats />
+      </AnimatedSection>
       
-      <Feature2 
-        title="Ready to Find Your Perfect Match?"
-        description="Join millions of people who have discovered meaningful relationships through our platform. Our advanced AI technology and comprehensive safety features make finding love easier and safer than ever before."
-        imageSrc="/hp-gma-video.webp"
-        imageAlt="Good Morning America feature about dating platform"
-        buttonPrimary={{
-          label: "Start Your Journey",
-          href: "#"
-        }}
-        buttonSecondary={{
-          label: "Learn How It Works",
-          href: "#"
-        }}
-      />
+      <AnimatedSection animationType="slide-left" delay={200}>
+        <Feature2 
+          imageSrc="/hp-gma-video.webp"
+          imageAlt="Good Morning America feature about dating platform"
+        />
+      </AnimatedSection>
       
-      <FAQs />
+      <AnimatedSection animationType="fade-up" delay={300}>
+        <FAQs />
+      </AnimatedSection>
+      
+      <AnimatedSection animationType="fade-in" delay={100}>
+        <FooterSection />
+      </AnimatedSection>
     </div>
   );
 }

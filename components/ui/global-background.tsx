@@ -3,14 +3,12 @@ import { cn } from "@/lib/utils";
 import { useMotionValue, motion, useMotionTemplate } from "framer-motion";
 import React from "react";
 
-export const HeroHighlight = ({
+export const GlobalBackground = ({
   children,
   className,
-  containerClassName,
 }: {
   children: React.ReactNode;
   className?: string;
-  containerClassName?: string;
 }) => {
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
@@ -35,17 +33,17 @@ export const HeroHighlight = ({
   return (
     <div
       className={cn(
-        "relative h-[40rem] flex items-center bg-white dark:bg-black justify-center w-full group",
-        containerClassName
+        "relative min-h-screen bg-white dark:bg-black w-full group",
+        className
       )}
       onMouseMove={handleMouseMove}
     >
       <div 
-        className="absolute inset-0 pointer-events-none opacity-70" 
+        className="absolute inset-0 pointer-events-none opacity-30" 
         style={dotPattern('rgb(212 212 212)')} // neutral-300 for light mode
       />
       <div 
-        className="absolute inset-0 dark:opacity-70 opacity-0 pointer-events-none" 
+        className="absolute inset-0 dark:opacity-30 opacity-0 pointer-events-none" 
         style={dotPattern('rgb(38 38 38)')} // neutral-800 for dark mode
       />
       <motion.div
@@ -69,42 +67,7 @@ export const HeroHighlight = ({
         }}
       />
 
-      <div className={cn("relative z-20", className)}>{children}</div>
+      <div className="relative z-20">{children}</div>
     </div>
-  );
-};
-
-export const Highlight = ({
-  children,
-  className,
-}: {
-  children: React.ReactNode;
-  className?: string;
-}) => {
-  return (
-    <motion.span
-      initial={{
-        backgroundSize: "0% 100%",
-      }}
-      animate={{
-        backgroundSize: "100% 100%",
-      }}
-      transition={{
-        duration: 2,
-        ease: "linear",
-        delay: 0.5,
-      }}
-      style={{
-        backgroundRepeat: "no-repeat",
-        backgroundPosition: "left center",
-        display: "inline",
-      }}
-      className={cn(
-        `relative inline-block pb-1 px-2 rounded-md bg-gradient-to-r from-blue-50 to-sky-50 dark:from-blue-950/40 dark:to-sky-950/40 border border-blue-200/60 dark:border-blue-700/40 font-semibold tracking-tight text-blue-900 dark:text-blue-100 shadow-sm`,
-        className
-      )}
-    >
-      {children}
-    </motion.span>
   );
 };

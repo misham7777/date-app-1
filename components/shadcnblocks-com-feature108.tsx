@@ -1,5 +1,8 @@
+"use client";
+
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@radix-ui/react-tabs";
 import { Layout, Pointer, Zap } from "lucide-react";
+import { useEffect, useState } from "react";
 
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -28,69 +31,75 @@ interface Feature108Props {
 }
 
 const Feature108 = ({
-  badge = "shadcnblocks.com",
-  heading = "A Collection of Components Built With Shadcn & Tailwind",
-  description = "Join us to build flawless web solutions.",
+  badge = "Relationship Intelligence",
+  heading = "Advanced Features for Complete Relationship Transparency",
+  description = "Uncover the truth about your partner's online activity with AI-powered multi-platform monitoring and facial recognition technology.",
   tabs = [
     {
       value: "tab-1",
-      icon: <Zap className="h-auto w-4 shrink-0" />,
-      label: "Boost Revenue",
+      icon: <span>📊</span>,
+      label: "Multi-Platform Scan",
       content: {
-        badge: "Modern Tactics",
-        title: "Make your site a true standout.",
+        badge: "Complete Coverage",
+        title: "Discover their digital footprint like never before.",
         description:
-          "Discover new web trends that help you craft sleek, highly functional sites that drive traffic and convert leads into customers.",
-        buttonText: "See Plans",
+          "Get comprehensive insights into dating app activity, profile changes, and behavioral patterns across 50+ platforms. Make informed decisions about your relationship with real evidence.",
+        buttonText: "Start Investigation",
         imageSrc:
-          "https://shadcnblocks.com/images/block/placeholder-dark-1.svg",
-        imageAlt: "placeholder",
+          "/hero-images/profile-1.png",
+        imageAlt: "Multi-platform scanning interface",
       },
     },
     {
       value: "tab-2",
-      icon: <Pointer className="h-auto w-4 shrink-0" />,
-      label: "Higher Engagement",
+      icon: <span>❤️</span>,
+      label: "Activity Tracking",
       content: {
-        badge: "Expert Features",
-        title: "Boost your site with top-tier design.",
+        badge: "Activity Intelligence",
+        title: "See when and where they're active on dating apps.",
         description:
-          "Use stellar design to easily engage users and strengthen their loyalty. Create a seamless experience that keeps them coming back for more.",
-        buttonText: "See Tools",
+          "Find out if their account is still active, including the last time and location they used dating platforms. Get real proof of their online dating activity with timestamps and location data.",
+        buttonText: "Start Investigation",
         imageSrc:
-          "https://shadcnblocks.com/images/block/placeholder-dark-2.svg",
-        imageAlt: "placeholder",
+          "/hero-images/profile-2.png",
+        imageAlt: "AI facial recognition interface",
       },
     },
     {
       value: "tab-3",
-      icon: <Layout className="h-auto w-4 shrink-0" />,
-      label: "Stunning Layouts",
+      icon: <span>📍</span>,
+      label: "AI Facial Recognition",
       content: {
-        badge: "Elite Solutions",
-        title: "Build an advanced web experience.",
+        badge: "Activity Intelligence",
+        title: "Upload any photo to find their hidden profiles.",
         description:
-          "Lift your brand with modern tech that grabs attention and drives action. Create a digital experience that stands out from the crowd.",
-        buttonText: "See Options",
+          "Our AI scans their face across 50+ dating platforms to find matching profiles, even when they use fake names or different photos. Get complete results in minutes.",
+        buttonText: "Start Investigation",
         imageSrc:
-          "https://shadcnblocks.com/images/block/placeholder-dark-3.svg",
-        imageAlt: "placeholder",
+          "/hero-images/map-interface.png",
+        imageAlt: "Activity tracking interface",
       },
     },
   ],
 }: Feature108Props) => {
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    setIsVisible(true);
+  }, []);
+
   return (
-    <section className="py-32">
+    <section className="pt-8 pb-4 md:pt-16 md:pb-8">
       <div className="container mx-auto">
-        <div className="flex flex-col items-center gap-4 text-center">
-          <Badge variant="outline">{badge}</Badge>
-          <h1 className="max-w-2xl text-3xl font-semibold md:text-4xl">
+        <div className={`flex flex-col items-center gap-6 md:gap-8 lg:gap-4 text-center transition-all duration-700 delay-100 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+          <Badge variant="outline" className="animate-pulse">{badge}</Badge>
+          <h1 className="max-w-2xl text-3xl sm:text-4xl md:text-5xl lg:text-6xl tracking-tighter font-bold leading-tight">
             {heading}
           </h1>
-          <p className="text-muted-foreground">{description}</p>
+          <p className="text-base sm:text-lg md:text-xl leading-relaxed tracking-tight text-muted-foreground">{description}</p>
         </div>
-        <Tabs defaultValue={tabs[0].value} className="mt-8">
-          <TabsList className="container flex flex-col items-center justify-center gap-4 sm:flex-row md:gap-10">
+        <Tabs defaultValue={tabs[0].value} className="mt-8 md:mt-16 lg:mt-8">
+          <TabsList className="container flex flex-col items-center justify-center gap-6 md:gap-4 sm:flex-row md:gap-10">
             {tabs.map((tab) => (
               <TabsTrigger
                 key={tab.value}
@@ -101,14 +110,14 @@ const Feature108 = ({
               </TabsTrigger>
             ))}
           </TabsList>
-          <div className="mx-auto mt-8 max-w-screen-xl rounded-2xl bg-muted/70 p-6 lg:p-16">
+          <div className="mx-auto mt-16 md:mt-8 max-w-screen-xl rounded-2xl bg-muted/70 p-8 md:p-6 lg:p-16">
             {tabs.map((tab) => (
               <TabsContent
                 key={tab.value}
                 value={tab.value}
-                className="grid place-items-center gap-20 lg:grid-cols-2 lg:gap-10"
+                className="grid place-items-center gap-32 md:gap-20 lg:grid-cols-2 lg:gap-10"
               >
-                <div className="flex flex-col gap-5">
+                <div className="flex flex-col gap-4 md:gap-8 lg:gap-5">
                   <Badge variant="outline" className="w-fit bg-background">
                     {tab.content.badge}
                   </Badge>
@@ -118,7 +127,7 @@ const Feature108 = ({
                   <p className="text-muted-foreground lg:text-lg">
                     {tab.content.description}
                   </p>
-                  <Button className="mt-2.5 w-fit gap-2" size="lg">
+                  <Button className="mt-4 md:mt-6 lg:mt-2.5 w-fit gap-2" size="lg">
                     {tab.content.buttonText}
                   </Button>
                 </div>

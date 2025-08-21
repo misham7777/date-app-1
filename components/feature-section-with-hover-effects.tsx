@@ -11,34 +11,49 @@ export function FeaturesSectionWithHoverEffects() {
     {
       title: "Secure & Private",
       description:
-        "Your safety is our priority. Advanced encryption and verification systems ensure your dating journey is secure and private.",
+        "We will never share any information you provide, and the person you're searching for will never know you looked them up.",
       icon: <IconShieldCheck className="w-6 h-6" />,
     },
     {
       title: "Quick & Easy",
       description:
-        "Get started in minutes with our streamlined setup process. Find meaningful connections without the hassle.",
+        "No login required. Simply upload their photo, and our AI will quickly reveal if they have active dating profiles across 50+ platforms.",
       icon: <IconBolt className="w-6 h-6" />,
     },
     {
-      title: "Smart Profiles",
+      title: "Complete Intelligence Report",
       description:
-        "AI-powered profile analysis helps you showcase your best self and find compatible matches effortlessly.",
+        "Get a detailed report with their profiles, photos, last activity, subscription levels, and location data across all platforms.",
       icon: <IconUserCircle className="w-6 h-6" />,
     },
     {
-      title: "Intelligent Matching",
+      title: "AI Facial Recognition",
       description:
-        "Our advanced algorithms learn your preferences to create meaningful connections that last.",
+        "Even if they've used a different name, age, or fake information, our advanced AI will still find their hidden profiles.",
       icon: <IconBrain className="w-6 h-6" />,
     },
   ];
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 relative z-10 py-8 md:py-10 max-w-7xl mx-auto px-4 md:px-6">
-      {features.map((feature, index) => (
-        <Feature key={feature.title} {...feature} index={index} />
-      ))}
-    </div>
+    <section className="pt-8 pb-4 md:pt-16 md:pb-8">
+      <div className="max-w-7xl mx-auto px-4 md:px-6">
+        {/* Headline and Subheading */}
+        <div className="text-center mb-8 md:mb-12">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl tracking-tighter font-bold mb-4 leading-tight">
+            Why People Choose Our Platform?
+          </h2>
+          <p className="text-base sm:text-lg md:text-xl leading-relaxed tracking-tight text-muted-foreground max-w-2xl mx-auto">
+            Thousands of people trust our AI-powered system to uncover the truth about their relationships and find peace of mind.
+          </p>
+        </div>
+        
+        {/* Features Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 relative z-10">
+          {features.map((feature, index) => (
+            <Feature key={feature.title} {...feature} index={index} />
+          ))}
+        </div>
+      </div>
+    </section>
   );
 }
 
