@@ -6,9 +6,9 @@ import { Eye, CheckCircle } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import Link from 'next/link'
 import { trackPageView, trackInteraction, trackFunnelStep } from '@/lib/supabase-tracking'
-import { useEffect } from 'react'
+import { useEffect, Suspense } from 'react'
 
-export default function ResultsPage() {
+function ResultsContent() {
   const searchParams = useSearchParams()
   
   // Get data from URL params
@@ -167,5 +167,13 @@ export default function ResultsPage() {
         </div>
       </div>
     </div>
+  )
+}
+
+export default function ResultsPage() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <ResultsContent />
+    </Suspense>
   )
 }

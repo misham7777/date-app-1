@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect, useRef, Suspense } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
@@ -31,7 +31,7 @@ interface MapboxFeature {
   }>
 }
 
-export default function QuizPage() {
+function QuizContent() {
   const router = useRouter()
   const searchParams = useSearchParams()
   const [currentStep, setCurrentStep] = useState(1) // Step 1 is now age (was step 2)
@@ -783,5 +783,13 @@ export default function QuizPage() {
         </div>
       </div>
     </div>
+  )
+}
+
+export default function QuizPage() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <QuizContent />
+    </Suspense>
   )
 }

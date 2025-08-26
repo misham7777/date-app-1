@@ -1,12 +1,12 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, Suspense } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Eye, MapPin } from 'lucide-react'
 import { useRouter, useSearchParams } from 'next/navigation'
 import { trackLoadingEvent, trackFunnelStep, trackPageView } from '@/lib/supabase-tracking'
 
-export default function LoadingPage() {
+function LoadingContent() {
   const router = useRouter()
   const searchParams = useSearchParams()
   const [percentage, setPercentage] = useState(97)
@@ -344,5 +344,13 @@ export default function LoadingPage() {
         </div>
       </div>
     </div>
+  )
+}
+
+export default function LoadingPage() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <LoadingContent />
+    </Suspense>
   )
 }

@@ -7,9 +7,20 @@ import { getSearchFunnelAnalytics, getSearchDropOffAnalysis, getSearchesWithProg
 import { Users, TrendingUp, TrendingDown, Clock, Target, Search } from 'lucide-react'
 
 interface SearchAnalyticsData {
-  searches: any[]
+  searches: Array<{
+    id: string
+    name: string
+    email?: string
+    search_type?: string
+    created_at: string
+    is_completed: boolean
+    current_step?: number
+  }>
   funnelAnalytics: any[]
-  dropOffs: any[]
+  dropOffs: Array<{
+    step_name: string
+    time_spent_seconds?: number
+  }>
 }
 
 export function SearchAnalyticsDashboard() {
@@ -49,11 +60,11 @@ export function SearchAnalyticsDashboard() {
   const completedSearches = data.searches.filter(search => search.is_completed).length
   const dropOffRate = totalSearches > 0 ? ((totalSearches - completedSearches) / totalSearches * 100).toFixed(1) : '0'
 
-  const stepDropOffs = data.dropOffs.reduce((acc: any, dropOff: any) => {
+  const stepDropOffs = data.dropOffs.reduce((acc: Record<string, number>, dropOff) => {
     const step = dropOff.step_name
     acc[step] = (acc[step] || 0) + 1
     return acc
-  }, {})
+  }, {} as Record<string, number>)
 
   if (loading) {
     return (
@@ -150,7 +161,7 @@ export function SearchAnalyticsDashboard() {
         </CardHeader>
         <CardContent>
           <div className="space-y-4">
-            {Object.entries(stepDropOffs).map(([step, count]) => (
+            {Object.entries(stepDropOffs).map(([step, count]: [string, number]) => (
               <div key={step} className="flex justify-between items-center">
                 <div>
                   <div className="font-medium capitalize">{step.replace('_', ' ')}</div>
@@ -176,7 +187,7 @@ export function SearchAnalyticsDashboard() {
         </CardHeader>
         <CardContent>
           <div className="space-y-4">
-            {data.searches.slice(0, 10).map((search: any) => (
+            {data.searches.slice(0, 10).map((search) => (
               <div key={search.id} className="flex justify-between items-center p-3 border rounded">
                 <div>
                   <div className="font-medium">{search.name}</div>
@@ -213,13 +224,13 @@ export function SearchAnalyticsDashboard() {
         <CardContent>
           <div className="space-y-4">
             {(() => {
-              const searchTypes = data.searches.reduce((acc: any, search: any) => {
+              const searchTypes = data.searches.reduce((acc: Record<string, number>, search) => {
                 const type = search.search_type || 'partner'
                 acc[type] = (acc[type] || 0) + 1
                 return acc
-              }, {})
+              }, {} as Record<string, number>)
 
-              return Object.entries(searchTypes).map(([type, count]) => (
+              return Object.entries(searchTypes).map(([type, count]: [string, number]) => (
                 <div key={type} className="flex justify-between items-center">
                   <div>
                     <div className="font-medium capitalize">{type}</div>

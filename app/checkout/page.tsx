@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, Suspense } from 'react'
 import { useSearchParams, useRouter } from 'next/navigation'
 import { motion } from 'framer-motion'
 import { Eye, Clock, Lock, CheckCircle, Flame, MapPin, CreditCard, Building, DollarSign, Smartphone } from 'lucide-react'
@@ -9,7 +9,7 @@ import { Input } from '@/components/ui/input'
 import { Card, CardContent } from '@/components/ui/card'
 import { trackPaymentAttempt, trackInteraction, trackFunnelStep, trackPageView } from '@/lib/supabase-tracking'
 
-export default function CheckoutPage() {
+function CheckoutContent() {
   const searchParams = useSearchParams()
   const router = useRouter()
   const [timeLeft, setTimeLeft] = useState(5 * 60) // 5 minutes in seconds
@@ -575,5 +575,13 @@ export default function CheckoutPage() {
         </div>
       </div>
     </div>
+  )
+}
+
+export default function CheckoutPage() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <CheckoutContent />
+    </Suspense>
   )
 }
