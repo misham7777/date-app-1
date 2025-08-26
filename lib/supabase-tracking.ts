@@ -26,7 +26,7 @@ export interface QuizAnswer {
   session_id: string
   step_number: number
   question_type: 'name' | 'age' | 'location' | 'photo'
-  answer_data: any
+  answer_data: Record<string, unknown>
   created_at?: string
 }
 
@@ -46,7 +46,7 @@ export interface UserInteraction {
   element_id?: string
   element_text?: string
   page_path?: string
-  interaction_data?: any
+  interaction_data?: Record<string, unknown>
   created_at?: string
 }
 
@@ -58,7 +58,7 @@ export interface PaymentAttempt {
   currency?: string
   status: 'attempted' | 'successful' | 'failed' | 'abandoned'
   error_message?: string
-  payment_data?: any
+  payment_data?: Record<string, unknown>
   created_at?: string
   completed_at?: string
 }

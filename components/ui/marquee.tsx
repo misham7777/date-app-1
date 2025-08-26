@@ -2,8 +2,6 @@ import { cn } from "@/lib/utils";
 
 interface MarqueeProps {
   className?: string;
-  reverse?: boolean;
-  pauseOnHover?: boolean;
   children?: React.ReactNode;
   vertical?: boolean;
   repeat?: number;
@@ -12,8 +10,6 @@ interface MarqueeProps {
 
 export function Marquee({
   className,
-  reverse,
-  pauseOnHover = false,
   children,
   vertical = false,
   repeat = 4,

@@ -9,6 +9,27 @@ import { useRouter } from 'next/navigation'
 import { trackQuizAnswer, trackInteraction, trackFunnelStep, trackPageView, trackingService } from '@/lib/supabase-tracking'
 import { useSearchParams } from 'next/navigation'
 
+// TypeScript interfaces for Mapbox API
+interface MapboxFeature {
+  id: string
+  type: string
+  place_type: string[]
+  relevance: number
+  properties: Record<string, unknown>
+  text: string
+  place_name: string
+  center: [number, number] // [longitude, latitude]
+  geometry: {
+    type: string
+    coordinates: [number, number]
+  }
+  context: Array<{
+    id: string
+    text: string
+    short_code?: string
+  }>
+}
+
 export default function QuizPage() {
   const router = useRouter()
   const searchParams = useSearchParams()
@@ -22,7 +43,7 @@ export default function QuizPage() {
     coordinates: { lat: 52.153794, lng: 21.078421 }
   })
   const [isValidAge, setIsValidAge] = useState(false)
-  const [locationSuggestions, setLocationSuggestions] = useState<string[]>([])
+  const [locationSuggestions, setLocationSuggestions] = useState<MapboxFeature[]>([])
   const [showSuggestions, setShowSuggestions] = useState(false)
   const [uploadState, setUploadState] = useState<'default' | 'dragOver' | 'uploaded' | 'error'>('default')
   const [photoPreview, setPhotoPreview] = useState<string | null>(null)
@@ -189,7 +210,7 @@ export default function QuizPage() {
     }
   }
 
-  const selectLocation = (suggestion: any) => {
+  const selectLocation = (suggestion: MapboxFeature) => {
     const [lng, lat] = suggestion.center
     setAnswers(prev => ({
       ...prev,
@@ -508,7 +529,7 @@ export default function QuizPage() {
                     {/* Location Suggestions */}
                     {showSuggestions && locationSuggestions.length > 0 && (
                       <div className="absolute z-10 w-full bg-white border border-gray-200 rounded-lg shadow-lg max-h-48 overflow-y-auto">
-                        {locationSuggestions.map((suggestion: any, index: number) => (
+                        {locationSuggestions.map((suggestion: MapboxFeature, index: number) => (
                           <button
                             key={index}
                             onClick={() => selectLocation(suggestion)}

@@ -19,7 +19,6 @@ interface NavBarProps {
 
 export function NavBar({ items, className }: NavBarProps) {
   const [activeTab, setActiveTab] = useState(items[0].name)
-  const [isMobile, setIsMobile] = useState(false)
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [selectedLanguage, setSelectedLanguage] = useState('EN')
 
@@ -39,15 +38,7 @@ export function NavBar({ items, className }: NavBarProps) {
     console.log(`Language changed to: ${languageCode}`);
   }
 
-  useEffect(() => {
-    const handleResize = () => {
-      setIsMobile(window.innerWidth < 768)
-    }
 
-    handleResize()
-    window.addEventListener("resize", handleResize)
-    return () => window.removeEventListener("resize", handleResize)
-  }, [])
 
   return (
     <div
