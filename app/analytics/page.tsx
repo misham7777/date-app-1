@@ -1,11 +1,11 @@
 'use client'
 
-import { AnalyticsDashboard } from '@/components/analytics-dashboard'
+import { SearchAnalyticsDashboard } from '@/components/search-analytics-dashboard'
 
 export default function AnalyticsPage() {
   return (
     <div className="min-h-screen bg-gray-50">
-      <AnalyticsDashboard />
+      <SearchAnalyticsDashboard />
     </div>
   )
 }

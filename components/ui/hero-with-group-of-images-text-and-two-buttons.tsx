@@ -8,7 +8,7 @@ import { HeroHighlight, Highlight } from "@/components/ui/hero-highlight";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import { trackLead, leadTrackingService } from "@/lib/lead-tracking";
+import { trackSearch, searchTrackingService } from "@/lib/search-tracking";
 
 function Hero() {
   const [isVisible, setIsVisible] = useState(false);
@@ -27,17 +27,14 @@ function Hero() {
     e.preventDefault();
     if (formData.name.trim()) {
       try {
-        // Track lead
-        const leadId = await trackLead({
-          session_id: leadTrackingService['sessionId'],
+        // Track search
+        const searchId = await trackSearch({
+          session_id: searchTrackingService['sessionId'],
           name: formData.name.trim(),
           email: formData.email || undefined,
           search_type: formData.searchType as 'partner' | 'friend' | 'family',
           source_page: 'home'
         });
-
-        // Start quiz session
-        await leadTrackingService.startQuizSession(leadId || undefined);
 
         // Navigate to quiz with the form data
         const params = new URLSearchParams({
