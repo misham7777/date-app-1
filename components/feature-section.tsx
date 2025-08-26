@@ -1,21 +1,26 @@
-import { Badge } from "@/components/ui/badge"
-import { Button } from "@/components/ui/button"
+"use client"
+
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { Button } from "@/components/ui/button"
 import { CheckCircle, Star, Users, Zap } from "lucide-react"
+import { useRouter } from "next/navigation"
 
 export function FeatureSection() {
+  const router = useRouter();
+
+  const handleStartJourney = () => {
+    router.push('/quiz');
+  };
+
   return (
-    <section className="py-16 md:py-24 bg-white dark:bg-gray-950">
-      <div className="container mx-auto px-4 md:px-6">
+    <section className="py-16 bg-gradient-to-br from-gray-50 to-white">
+      <div className="container mx-auto px-4">
         <div className="text-center mb-12">
-          <Badge variant="secondary" className="mb-4">
-            Why Choose Us
-          </Badge>
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            Powerful Features for Modern Dating
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+            Why Choose Our Platform?
           </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Discover the advanced tools and features that make our platform the leading choice for finding meaningful connections.
+          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+            Experience the most advanced relationship intelligence technology available
           </p>
         </div>
 
@@ -109,7 +114,11 @@ export function FeatureSection() {
         </div>
 
         <div className="text-center mt-12">
-          <Button size="lg" className="bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700 text-white">
+          <Button 
+            size="lg" 
+            className="bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700 text-white"
+            onClick={handleStartJourney}
+          >
             Start Your Journey
           </Button>
         </div>

@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from "react"
 import { motion } from "framer-motion"
 import Link from "next/link"
-import { LucideIcon } from "lucide-react"
+import { LucideIcon, Menu, X } from "lucide-react"
 import { cn } from "@/lib/utils"
 
 interface NavItem {
@@ -20,6 +20,24 @@ interface NavBarProps {
 export function NavBar({ items, className }: NavBarProps) {
   const [activeTab, setActiveTab] = useState(items[0].name)
   const [isMobile, setIsMobile] = useState(false)
+  const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const [selectedLanguage, setSelectedLanguage] = useState('EN')
+
+  const languageOptions = [
+    { code: 'FR', name: 'French' },
+    { code: 'EN', name: 'English' },
+    { code: 'ES', name: 'Spanish' },
+    { code: 'PT', name: 'Portuguese' },
+    { code: 'IT', name: 'Italian' },
+    { code: 'DE', name: 'German' },
+    { code: 'PL', name: 'Polish' },
+  ]
+
+  const handleLanguageSelect = (languageCode: string) => {
+    setSelectedLanguage(languageCode);
+    setIsMenuOpen(false);
+    console.log(`Language changed to: ${languageCode}`);
+  }
 
   useEffect(() => {
     const handleResize = () => {
@@ -39,6 +57,7 @@ export function NavBar({ items, className }: NavBarProps) {
       )}
     >
       <div className="flex items-center gap-3 bg-white/95 dark:bg-gray-900/95 border border-gray-200 dark:border-gray-700 backdrop-blur-lg py-2 px-2 rounded-full shadow-xl">
+        {/* Home Menu Item */}
         {items.map((item) => {
           const Icon = item.icon
           const isActive = activeTab === item.name
@@ -79,7 +98,56 @@ export function NavBar({ items, className }: NavBarProps) {
             </Link>
           )
         })}
+
+        {/* Language Menu Button */}
+        <div className="relative">
+          <button
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            className="flex items-center gap-2 px-4 py-3 text-sm font-semibold text-gray-700 dark:text-gray-300 hover:text-primary rounded-full transition-colors"
+          >
+            <span className="hidden md:inline">{selectedLanguage}</span>
+            {isMenuOpen ? (
+              <X size={16} className="text-gray-500" />
+            ) : (
+              <Menu size={16} className="text-gray-500" />
+            )}
+          </button>
+
+          {/* Language Dropdown */}
+          {isMenuOpen && (
+            <div className="absolute top-full right-0 mt-2 bg-white/95 dark:bg-gray-900/95 border border-gray-200 dark:border-gray-700 backdrop-blur-lg rounded-2xl shadow-xl p-2 min-w-[180px]">
+              <div className="text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wide px-3 py-2">
+                Language
+              </div>
+              {languageOptions.map((language) => (
+                <button
+                  key={language.code}
+                  onClick={() => handleLanguageSelect(language.code)}
+                  className={`w-full flex items-center gap-3 px-3 py-2 text-left rounded-lg transition-colors duration-200 text-sm font-medium ${
+                    selectedLanguage === language.code
+                      ? 'bg-primary/10 text-primary'
+                      : 'text-gray-700 dark:text-gray-300 hover:text-primary hover:bg-primary/5'
+                  }`}
+                  aria-label={`Select ${language.name} language`}
+                >
+                  <span>{language.code}</span>
+                  {selectedLanguage === language.code && (
+                    <span className="ml-auto text-primary">✓</span>
+                  )}
+                </button>
+              ))}
+            </div>
+          )}
+        </div>
       </div>
+
+      {/* Backdrop to close dropdown when clicking outside */}
+      {isMenuOpen && (
+        <div 
+          className="fixed inset-0 z-[-1]" 
+          onClick={() => setIsMenuOpen(false)}
+        />
+      )}
     </div>
   )
 }

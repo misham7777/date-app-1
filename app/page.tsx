@@ -93,11 +93,13 @@ export default function Home() {
                     S
                   </div>
                   <div>
-                    <h4 className="font-semibold text-gray-900 text-sm md:text-base">Sarah M.</h4>
-                    <p className="text-xs md:text-sm text-muted-foreground">Verified suspicions</p>
+                    <h3 className="font-semibold text-gray-900 text-sm md:text-base">Sarah M.</h3>
+                    <p className="text-gray-600 text-xs md:text-sm">Verified User</p>
                   </div>
                 </div>
-                <p className="text-gray-700 text-sm md:text-base">&ldquo;Had a feeling something was off. Better to know for certain than live with doubt. Now I can make informed decisions.&rdquo;</p>
+                <p className="text-gray-700 text-sm md:text-base leading-relaxed">
+                  "I was suspicious about my partner's behavior. This tool helped me find the truth. Now I can make informed decisions about my relationship."
+                </p>
               </div>
               
               <div className="bg-white rounded-2xl p-3 md:p-6 shadow-sm mx-auto max-w-sm hover:scale-105 transition-transform duration-300">
@@ -106,11 +108,13 @@ export default function Home() {
                     M
                   </div>
                   <div>
-                    <h4 className="font-semibold text-gray-900 text-sm md:text-base">Mike R.</h4>
-                    <p className="text-xs md:text-sm text-muted-foreground">Due diligence</p>
+                    <h3 className="font-semibold text-gray-900 text-sm md:text-base">Mike R.</h3>
+                    <p className="text-gray-600 text-xs md:text-sm">Verified User</p>
                   </div>
                 </div>
-                <p className="text-gray-700 text-sm md:text-base">&ldquo;Trust is important, but verification is smart. Found exactly what I suspected. Knowledge is power.&rdquo;</p>
+                <p className="text-gray-700 text-sm md:text-base leading-relaxed">
+                  "The AI facial recognition is incredible. Found profiles I never knew existed. Peace of mind is priceless."
+                </p>
               </div>
               
               <div className="bg-white rounded-2xl p-3 md:p-6 shadow-sm mx-auto max-w-sm hover:scale-105 transition-transform duration-300">
@@ -119,24 +123,13 @@ export default function Home() {
                     L
                   </div>
                   <div>
-                    <h4 className="font-semibold text-gray-900 text-sm md:text-base">Lisa K.</h4>
-                    <p className="text-xs md:text-sm text-muted-foreground">Peace of mind</p>
+                    <h3 className="font-semibold text-gray-900 text-sm md:text-base">Lisa K.</h3>
+                    <p className="text-gray-600 text-xs md:text-sm">Verified User</p>
                   </div>
                 </div>
-                <p className="text-gray-700 text-sm md:text-base">&ldquo;Sometimes your gut is right. Quick search confirmed my instincts. No drama, just facts.&rdquo;</p>
-              </div>
-              
-              <div className="bg-white rounded-2xl p-3 md:p-6 shadow-sm mx-auto max-w-sm hover:scale-105 transition-transform duration-300">
-                <div className="flex items-center mb-2 md:mb-4">
-                  <div className="w-10 h-10 md:w-12 md:h-12 bg-orange-500 rounded-full flex items-center justify-center text-white font-bold text-base md:text-lg mr-2 md:mr-3">
-                    D
-                  </div>
-                  <div>
-                    <h4 className="font-semibold text-gray-900 text-sm md:text-base">David P.</h4>
-                    <p className="text-xs md:text-sm text-muted-foreground">Confirmed doubts</p>
-                  </div>
-                </div>
-                <p className="text-gray-700 text-sm md:text-base">&ldquo;She said she deleted all dating apps. Found 4 active profiles. Facts don&apos;t lie.&rdquo;</p>
+                <p className="text-gray-700 text-sm md:text-base leading-relaxed">
+                  "Finally, a tool that actually works! Found multiple hidden profiles across different platforms. Highly recommend."
+                </p>
               </div>
             </Marquee>
           </div>
@@ -145,92 +138,74 @@ export default function Home() {
           <div className="hidden md:block">
             <Marquee
               pauseOnHover={true}
-              className="py-4 [--duration:40s]"
+              className="py-8 [--duration:40s]"
             >
-              <div className="bg-white rounded-2xl p-6 shadow-sm mx-4 min-w-[300px] hover:scale-105 transition-transform duration-300">
+              <div className="bg-white rounded-2xl p-6 shadow-sm mx-4 hover:scale-105 transition-transform duration-300 min-w-[400px]">
                 <div className="flex items-center mb-4">
                   <div className="w-12 h-12 bg-pink-500 rounded-full flex items-center justify-center text-white font-bold text-lg mr-3">
                     S
                   </div>
                   <div>
-                    <h4 className="font-semibold text-gray-900">Sarah M.</h4>
-                    <p className="text-sm text-muted-foreground">Verified suspicions</p>
+                    <h3 className="font-semibold text-gray-900">Sarah M.</h3>
+                    <p className="text-gray-600 text-sm">Verified User</p>
                   </div>
                 </div>
-                <p className="text-gray-700">&ldquo;Had a feeling something was off. Better to know for certain than live with doubt. Now I can make informed decisions.&rdquo;</p>
+                <p className="text-gray-700 leading-relaxed">
+                  "I was suspicious about my partner's behavior. This tool helped me find the truth. Now I can make informed decisions about my relationship."
+                </p>
               </div>
               
-              <div className="bg-white rounded-2xl p-6 shadow-sm mx-4 min-w-[300px] hover:scale-105 transition-transform duration-300">
+              <div className="bg-white rounded-2xl p-6 shadow-sm mx-4 hover:scale-105 transition-transform duration-300 min-w-[400px]">
                 <div className="flex items-center mb-4">
                   <div className="w-12 h-12 bg-blue-500 rounded-full flex items-center justify-center text-white font-bold text-lg mr-3">
                     M
                   </div>
                   <div>
-                    <h4 className="font-semibold text-gray-900">Mike R.</h4>
-                    <p className="text-sm text-muted-foreground">Due diligence</p>
+                    <h3 className="font-semibold text-gray-900">Mike R.</h3>
+                    <p className="text-gray-600 text-sm">Verified User</p>
                   </div>
                 </div>
-                <p className="text-gray-700">&ldquo;Trust is important, but verification is smart. Found exactly what I suspected. Knowledge is power.&rdquo;</p>
+                <p className="text-gray-700 leading-relaxed">
+                  "The AI facial recognition is incredible. Found profiles I never knew existed. Peace of mind is priceless."
+                </p>
               </div>
               
-              <div className="bg-white rounded-2xl p-6 shadow-sm mx-4 min-w-[300px] hover:scale-105 transition-transform duration-300">
+              <div className="bg-white rounded-2xl p-6 shadow-sm mx-4 hover:scale-105 transition-transform duration-300 min-w-[400px]">
                 <div className="flex items-center mb-4">
                   <div className="w-12 h-12 bg-green-500 rounded-full flex items-center justify-center text-white font-bold text-lg mr-3">
                     L
                   </div>
                   <div>
-                    <h4 className="font-semibold text-gray-900">Lisa K.</h4>
-                    <p className="text-sm text-muted-foreground">Peace of mind</p>
+                    <h3 className="font-semibold text-gray-900">Lisa K.</h3>
+                    <p className="text-gray-600 text-sm">Verified User</p>
                   </div>
                 </div>
-                <p className="text-gray-700">&ldquo;Sometimes your gut is right. Quick search confirmed my instincts. No drama, just facts.&rdquo;</p>
+                <p className="text-gray-700 leading-relaxed">
+                  "Finally, a tool that actually works! Found multiple hidden profiles across different platforms. Highly recommend."
+                </p>
               </div>
               
-              <div className="bg-white rounded-2xl p-6 shadow-sm mx-4 min-w-[300px] hover:scale-105 transition-transform duration-300">
+              <div className="bg-white rounded-2xl p-6 shadow-sm mx-4 hover:scale-105 transition-transform duration-300 min-w-[400px]">
                 <div className="flex items-center mb-4">
-                  <div className="w-12 h-12 bg-orange-500 rounded-full flex items-center justify-center text-white font-bold text-lg mr-3">
+                  <div className="w-12 h-12 bg-purple-500 rounded-full flex items-center justify-center text-white font-bold text-lg mr-3">
                     D
                   </div>
                   <div>
-                    <h4 className="font-semibold text-gray-900">David P.</h4>
-                    <p className="text-sm text-muted-foreground">Confirmed doubts</p>
+                    <h3 className="font-semibold text-gray-900">David L.</h3>
+                    <p className="text-gray-600 text-sm">Verified User</p>
                   </div>
                 </div>
-                <p className="text-gray-700">&ldquo;She said she deleted all dating apps. Found 4 active profiles. Facts don&apos;t lie.&rdquo;</p>
-              </div>
-              
-              <div className="bg-white rounded-2xl p-6 shadow-sm mx-4 min-w-[300px] hover:scale-105 transition-transform duration-300">
-                <div className="flex items-center mb-4">
-                  <div className="w-12 h-12 bg-indigo-500 rounded-full flex items-center justify-center text-white font-bold text-lg mr-3">
-                    A
-                  </div>
-                  <div>
-                    <h4 className="font-semibold text-gray-900">Alex T.</h4>
-                    <p className="text-sm text-muted-foreground">New user</p>
-                  </div>
-                </div>
-                <p className="text-gray-700">&ldquo;Amazing experience! The interface is so intuitive and the matches are spot on.&rdquo;</p>
-              </div>
-              
-              <div className="bg-white rounded-2xl p-6 shadow-sm mx-4 min-w-[300px] hover:scale-105 transition-transform duration-300">
-                <div className="flex items-center mb-4">
-                  <div className="w-12 h-12 bg-teal-500 rounded-full flex items-center justify-center text-white font-bold text-lg mr-3">
-                    E
-                  </div>
-                  <div>
-                    <h4 className="font-semibold text-gray-900">Emma W.</h4>
-                    <p className="text-sm text-muted-foreground">Long-term user</p>
-                  </div>
-                </div>
-                <p className="text-gray-700">&ldquo;Been using this for 6 months and finally found my perfect match. Highly recommend!&rdquo;</p>
+                <p className="text-gray-700 leading-relaxed">
+                  "The multi-platform scanning feature is a game-changer. Found profiles on platforms I didn't even know existed."
+                </p>
               </div>
             </Marquee>
           </div>
-        </div>
-      </section>
+          </div>
+        </section>
       </AnimatedSection>
-      
-      <AnimatedSection animationType="slide-up" delay={300}>
+
+      <AnimatedSection animationType="fade-up" delay={300}>
         <Feature197 
           features={[
             {
@@ -254,27 +229,27 @@ export default function Home() {
           ]}
         />
       </AnimatedSection>
-      
-      <AnimatedSection animationType="fade-up" delay={200}>
+
+      <AnimatedSection animationType="fade-up" delay={400}>
         <FeaturesSectionWithHoverEffects />
       </AnimatedSection>
-      
-      <AnimatedSection animationType="scale-in" delay={100}>
+
+      <AnimatedSection animationType="fade-up" delay={500}>
         <Stats />
       </AnimatedSection>
-      
-      <AnimatedSection animationType="slide-left" delay={200}>
+
+      <AnimatedSection animationType="fade-up" delay={600}>
         <Feature2 
           imageSrc="/hp-gma-video.webp"
           imageAlt="Good Morning America feature about dating platform"
         />
       </AnimatedSection>
-      
-      <AnimatedSection animationType="fade-up" delay={300}>
+
+      <AnimatedSection animationType="fade-up" delay={700}>
         <FAQs />
       </AnimatedSection>
-      
-      <AnimatedSection animationType="fade-in" delay={100}>
+
+      <AnimatedSection animationType="fade-up" delay={800}>
         <FooterSection />
       </AnimatedSection>
     </div>

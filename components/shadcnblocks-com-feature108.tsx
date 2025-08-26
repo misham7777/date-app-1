@@ -3,6 +3,7 @@
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@radix-ui/react-tabs";
 import { Layout, Pointer, Zap } from "lucide-react";
 import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -31,9 +32,9 @@ interface Feature108Props {
 }
 
 const Feature108 = ({
-  badge = "Relationship Intelligence",
-  heading = "Advanced Features for Complete Relationship Transparency",
-  description = "Uncover the truth about your partner's online activity with AI-powered multi-platform monitoring and facial recognition technology.",
+  badge = "Features",
+  heading = "Advanced Features",
+  description = "Discover what makes us different",
   tabs = [
     {
       value: "tab-1",
@@ -43,7 +44,7 @@ const Feature108 = ({
         badge: "Complete Coverage",
         title: "Discover their digital footprint like never before.",
         description:
-          "Get comprehensive insights into dating app activity, profile changes, and behavioral patterns across 50+ platforms. Make informed decisions about your relationship with real evidence.",
+          "Find out if their account is still active, including the last time and location they used dating platforms. Get real proof of their online dating activity with timestamps and location data.",
         buttonText: "Start Investigation",
         imageSrc:
           "/hero-images/profile-1.png",
@@ -83,10 +84,15 @@ const Feature108 = ({
   ],
 }: Feature108Props) => {
   const [isVisible, setIsVisible] = useState(false);
+  const router = useRouter();
 
   useEffect(() => {
     setIsVisible(true);
   }, []);
+
+  const handleStartInvestigation = () => {
+    router.push('/quiz');
+  };
 
   return (
     <section className="pt-8 pb-4 md:pt-16 md:pb-8">
@@ -127,7 +133,11 @@ const Feature108 = ({
                   <p className="text-muted-foreground lg:text-lg">
                     {tab.content.description}
                   </p>
-                  <Button className="mt-4 md:mt-6 lg:mt-2.5 w-fit gap-2" size="lg">
+                  <Button 
+                    className="mt-4 md:mt-6 lg:mt-2.5 w-fit gap-2" 
+                    size="lg"
+                    onClick={handleStartInvestigation}
+                  >
                     {tab.content.buttonText}
                   </Button>
                 </div>

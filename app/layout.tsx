@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import NavBarWrapper from "@/components/navbar-wrapper";
+import ConditionalNavbar from "@/components/conditional-navbar";
 import { GlobalBackground } from "@/components/ui/global-background";
 
 const geistSans = Geist({
@@ -34,7 +34,7 @@ export default function RootLayout({
       >
         <GlobalBackground>
           <div className="relative w-full overflow-x-hidden">
-            <NavBarWrapper />
+            <ConditionalNavbar />
             {children}
           </div>
         </GlobalBackground>

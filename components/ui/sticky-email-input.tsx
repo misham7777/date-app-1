@@ -5,6 +5,7 @@ import { cn } from "@/lib/utils";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Check } from "lucide-react";
+import { useRouter } from "next/navigation";
 
 interface StickyEmailInputProps {
   className?: string;
@@ -12,7 +13,8 @@ interface StickyEmailInputProps {
 
 export const StickyEmailInput = ({ className }: StickyEmailInputProps) => {
   const [isVisible, setIsVisible] = useState(false);
-  const [email, setEmail] = useState("");
+  const [name, setName] = useState("");
+  const router = useRouter();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -32,9 +34,10 @@ export const StickyEmailInput = ({ className }: StickyEmailInputProps) => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle email submission
-    console.log("Email submitted:", email);
-    setEmail("");
+    if (name.trim()) {
+      // Navigate to quiz with the name pre-filled
+      router.push(`/quiz?name=${encodeURIComponent(name.trim())}`);
+    }
   };
 
   return (
@@ -96,8 +99,8 @@ export const StickyEmailInput = ({ className }: StickyEmailInputProps) => {
               <Input
                 type="text"
                 placeholder="Enter first name only"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
+                value={name}
+                onChange={(e) => setName(e.target.value)}
                 className="flex-1 bg-white/90 border-blue-300 text-gray-900 placeholder-gray-600 focus:border-blue-500 focus:ring-blue-500"
                 required
               />

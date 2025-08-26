@@ -1,21 +1,35 @@
 "use client"
 
 import { NavBar } from "@/components/ui/tubelight-navbar";
-import { Home, User, Settings, Mail, Heart, Menu, X } from "lucide-react";
+import { Home, Menu, X } from "lucide-react";
 import { useState, useEffect } from "react";
 
 export default function NavBarWrapper() {
   const [isMobile, setIsMobile] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [selectedLanguage, setSelectedLanguage] = useState('EN');
 
   const navItems = [
     { name: "Home", url: "/", icon: Home },
-    { name: "Features", url: "/#features", icon: Heart },
-    { name: "About", url: "/#about", icon: User },
-    { name: "Contact", url: "/#contact", icon: Mail },
-    { name: "Settings", url: "/settings", icon: Settings },
   ];
+
+  const languageOptions = [
+    { code: 'FR', name: 'French' },
+    { code: 'EN', name: 'English' },
+    { code: 'ES', name: 'Spanish' },
+    { code: 'PT', name: 'Portuguese' },
+    { code: 'IT', name: 'Italian' },
+    { code: 'DE', name: 'German' },
+    { code: 'PL', name: 'Polish' },
+  ];
+
+  const handleLanguageSelect = (languageCode: string) => {
+    setSelectedLanguage(languageCode);
+    setIsMenuOpen(false);
+    // Here you can add logic to change the app language
+    console.log(`Language changed to: ${languageCode}`);
+  };
 
   useEffect(() => {
     const handleResize = () => {
@@ -65,11 +79,12 @@ export default function NavBarWrapper() {
         </div>
       )}
 
-              {/* Mobile Menu Overlay */}
-        {isMenuOpen && (
-          <div className="fixed inset-0 z-[9998] bg-black/50 backdrop-blur-sm" onClick={() => setIsMenuOpen(false)}>
-            <div className="absolute top-20 right-4 bg-white/95 dark:bg-gray-900/95 border border-gray-200 dark:border-gray-700 backdrop-blur-lg rounded-2xl shadow-xl p-4 min-w-[200px] max-w-[280px]">
+      {/* Mobile Menu Overlay */}
+      {isMenuOpen && (
+        <div className="fixed inset-0 z-[9998] bg-black/50 backdrop-blur-sm" onClick={() => setIsMenuOpen(false)}>
+          <div className="absolute top-20 right-4 bg-white/95 dark:bg-gray-900/95 border border-gray-200 dark:border-gray-700 backdrop-blur-lg rounded-2xl shadow-xl p-4 min-w-[200px] max-w-[280px]">
             <nav className="flex flex-col gap-2">
+              {/* Home Menu Item */}
               {navItems.map((item) => (
                 <a
                   key={item.name}
@@ -81,6 +96,30 @@ export default function NavBarWrapper() {
                   <span>{item.name}</span>
                 </a>
               ))}
+              
+              {/* Language Selection Section */}
+              <div className="border-t border-gray-200 dark:border-gray-700 pt-2 mt-2">
+                <div className="px-4 py-2 text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wide">
+                  Language
+                </div>
+                {languageOptions.map((language) => (
+                  <button
+                    key={language.code}
+                    onClick={() => handleLanguageSelect(language.code)}
+                    className={`w-full flex items-center gap-3 px-4 py-3 text-left rounded-lg transition-colors duration-200 font-medium ${
+                      selectedLanguage === language.code
+                        ? 'bg-primary/10 text-primary'
+                        : 'text-gray-700 dark:text-gray-300 hover:text-primary hover:bg-primary/5'
+                    }`}
+                    aria-label={`Select ${language.name} language`}
+                  >
+                    <span>{language.code}</span>
+                    {selectedLanguage === language.code && (
+                      <span className="ml-auto text-primary">✓</span>
+                    )}
+                  </button>
+                ))}
+              </div>
             </nav>
           </div>
         </div>

@@ -157,7 +157,12 @@
     }
   }
   --color-destructive-foreground: var(--destructive-foreground)
-}
+;
+  @keyframes rainbow {
+  0% {
+    background-position: 0%;}
+  100% {
+    background-position: 200%;}}}
 
 :root {
   --radius: 0.625rem;

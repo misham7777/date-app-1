@@ -7,6 +7,7 @@ import { Input } from "@/components/ui/input";
 import { HeroHighlight, Highlight } from "@/components/ui/hero-highlight";
 import Image from "next/image";
 import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 
 function Hero() {
   const [isVisible, setIsVisible] = useState(false);
@@ -15,6 +16,7 @@ function Hero() {
     email: '',
     searchType: 'partner'
   });
+  const router = useRouter();
 
   useEffect(() => {
     setIsVisible(true);
@@ -22,8 +24,14 @@ function Hero() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission
-    console.log('Form submitted:', formData);
+    if (formData.name.trim()) {
+      // Navigate to quiz with the form data
+      const params = new URLSearchParams({
+        name: formData.name.trim(),
+        searchType: formData.searchType
+      });
+      router.push(`/quiz?${params.toString()}`);
+    }
   };
 
   const handleInputChange = (field: string, value: string) => {
@@ -55,7 +63,7 @@ function Hero() {
           <div className={`order-2 lg:order-2 transition-all duration-1000 delay-400 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}>
             <div className="relative w-full max-w-sm mx-auto lg:max-w-md">
               {/* White Card Container */}
-              <div className="relative rounded-2xl bg-white shadow-xl p-6 lg:p-1.5">
+              <form onSubmit={handleSubmit} className="relative rounded-2xl bg-white shadow-xl p-6 lg:p-1.5">
                 {/* Header */}
                 <div className="text-center mb-4 lg:mb-1.5">
                   <h3 className="text-xl lg:text-2xl font-bold text-gray-900">
@@ -132,10 +140,21 @@ function Hero() {
                   </button>
                 </div>
                 
+                {/* Name Input */}
+                <div className="mb-4 lg:mb-1.5">
+                  <Input
+                    type="text"
+                    placeholder="Enter their first name"
+                    value={formData.name}
+                    onChange={(e) => handleInputChange('name', e.target.value)}
+                    className="h-12 text-lg"
+                    required
+                  />
+                </div>
+                
                 {/* Submit Button */}
                 <Button
                   type="submit"
-                  onClick={handleSubmit}
                   className="w-full h-14 bg-black hover:bg-gray-800 text-white font-bold text-lg rounded-xl transition-all duration-300 hover:scale-105 group"
                 >
                   <div className="flex flex-col items-center">
@@ -144,7 +163,7 @@ function Hero() {
                   </div>
                   <MoveRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform duration-200" />
                 </Button>
-              </div>
+              </form>
             </div>
           </div>
         </div>
