@@ -323,7 +323,7 @@ export default function CheckoutPage() {
                     className="absolute top-0 w-2 h-3 bg-black transform -translate-x-1"
                     initial={{ left: '0%' }}
                     animate={{ left: '97%' }}
-                    transition={{ duration: 1, delay: 0.6, ease: "easeOut" }}
+                    transition={{ duration: 1, delay: 0.6, ease: "easeOut" as const }}
                   />
                 </div>
               </div>

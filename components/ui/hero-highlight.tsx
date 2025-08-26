@@ -91,7 +91,7 @@ export const Highlight = ({
       }}
       transition={{
         duration: 2,
-        ease: "linear",
+        ease: "linear" as const,
         delay: 0.5,
       }}
       style={{

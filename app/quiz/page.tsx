@@ -412,7 +412,7 @@ export default function QuizPage() {
                   className="bg-gradient-to-r from-red-500 to-orange-500 h-2 rounded-full"
                   initial={{ width: 0 }}
                   animate={{ width: `${progressPercentage}%` }}
-                  transition={{ duration: 0.5, ease: "easeOut" }}
+                  transition={{ duration: 0.5, ease: "easeOut" as const }}
                 />
               </div>
               <p className="text-sm text-gray-600">

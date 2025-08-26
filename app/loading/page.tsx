@@ -309,7 +309,7 @@ export default function LoadingPage() {
                   className="h-full bg-gradient-to-r from-pink-500 via-orange-500 to-green-500"
                   initial={{ width: 0 }}
                   animate={{ width: `${progressBar}%` }}
-                  transition={{ duration: 0.5, ease: "easeOut" }}
+                  transition={{ duration: 0.5, ease: "easeOut" as const }}
                 />
               </div>
 
