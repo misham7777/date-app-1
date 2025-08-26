@@ -7,7 +7,7 @@ import { Input } from '@/components/ui/input'
 import { ArrowRight, Eye, ArrowLeft, MapPin, Navigation, Upload, X } from 'lucide-react'
 import { useRouter } from 'next/navigation'
 import { trackQuizAnswer, trackInteraction, trackFunnelStep, trackPageView, trackingService } from '@/lib/supabase-tracking'
-import { leadTrackingService, trackQuizAnswer as trackLeadQuizAnswer, trackQuizDropOff, completeQuizSession } from '@/lib/lead-tracking'
+import { searchTrackingService, trackSearchAnswer, trackSearchDropOff, completeSearchSession } from '@/lib/search-tracking'
 import { useSearchParams } from 'next/navigation'
 
 // TypeScript interfaces for Mapbox API
@@ -109,9 +109,9 @@ export default function QuizPage() {
         answer_data: { age: age }
       })
       
-      // Track with lead tracking service
-      await trackLeadQuizAnswer({
-        session_id: leadTrackingService['sessionId'],
+      // Track with search tracking service
+      await trackSearchAnswer({
+        session_id: searchTrackingService['sessionId'],
         step_number: 1,
         question_type: 'age',
         answer_data: { age: age }
@@ -131,9 +131,9 @@ export default function QuizPage() {
         answer_data: { location: value.trim() }
       })
       
-      // Track with lead tracking service
-      await trackLeadQuizAnswer({
-        session_id: leadTrackingService['sessionId'],
+      // Track with search tracking service
+      await trackSearchAnswer({
+        session_id: searchTrackingService['sessionId'],
         step_number: 2,
         question_type: 'location',
         answer_data: { location: value.trim() }
@@ -185,8 +185,8 @@ export default function QuizPage() {
       current_step: totalSteps
     })
 
-    // Complete quiz session
-    await completeQuizSession()
+    // Complete search session
+    await completeSearchSession()
 
     // Redirect to loading page with user data
     const params = new URLSearchParams({
@@ -327,9 +327,9 @@ export default function QuizPage() {
       }
     })
     
-    // Track with lead tracking service
-    await trackLeadQuizAnswer({
-      session_id: leadTrackingService['sessionId'],
+    // Track with search tracking service
+    await trackSearchAnswer({
+      session_id: searchTrackingService['sessionId'],
       step_number: 3,
       question_type: 'photo',
       answer_data: { 
