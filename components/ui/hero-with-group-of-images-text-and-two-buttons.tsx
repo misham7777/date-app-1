@@ -8,6 +8,7 @@ import { HeroHighlight, Highlight } from "@/components/ui/hero-highlight";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
+import { trackLead, leadTrackingService } from "@/lib/lead-tracking";
 
 function Hero() {
   const [isVisible, setIsVisible] = useState(false);
@@ -22,15 +23,37 @@ function Hero() {
     setIsVisible(true);
   }, []);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (formData.name.trim()) {
-      // Navigate to quiz with the form data
-      const params = new URLSearchParams({
-        name: formData.name.trim(),
-        searchType: formData.searchType
-      });
-      router.push(`/quiz?${params.toString()}`);
+      try {
+        // Track lead
+        const leadId = await trackLead({
+          session_id: leadTrackingService['sessionId'],
+          name: formData.name.trim(),
+          email: formData.email || undefined,
+          search_type: formData.searchType as 'partner' | 'friend' | 'family',
+          source_page: 'home'
+        });
+
+        // Start quiz session
+        await leadTrackingService.startQuizSession(leadId || undefined);
+
+        // Navigate to quiz with the form data
+        const params = new URLSearchParams({
+          name: formData.name.trim(),
+          searchType: formData.searchType
+        });
+        router.push(`/quiz?${params.toString()}`);
+      } catch (error) {
+        console.error('Error tracking lead:', error);
+        // Still navigate even if tracking fails
+        const params = new URLSearchParams({
+          name: formData.name.trim(),
+          searchType: formData.searchType
+        });
+        router.push(`/quiz?${params.toString()}`);
+      }
     }
   };
 

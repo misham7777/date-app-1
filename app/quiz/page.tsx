@@ -7,6 +7,7 @@ import { Input } from '@/components/ui/input'
 import { ArrowRight, Eye, ArrowLeft, MapPin, Navigation, Upload, X } from 'lucide-react'
 import { useRouter } from 'next/navigation'
 import { trackQuizAnswer, trackInteraction, trackFunnelStep, trackPageView, trackingService } from '@/lib/supabase-tracking'
+import { leadTrackingService, trackQuizAnswer as trackLeadQuizAnswer, trackQuizDropOff, completeQuizSession } from '@/lib/lead-tracking'
 import { useSearchParams } from 'next/navigation'
 
 // TypeScript interfaces for Mapbox API
@@ -107,6 +108,14 @@ export default function QuizPage() {
         question_type: 'age',
         answer_data: { age: age }
       })
+      
+      // Track with lead tracking service
+      await trackLeadQuizAnswer({
+        session_id: leadTrackingService['sessionId'],
+        step_number: 1,
+        question_type: 'age',
+        answer_data: { age: age }
+      })
     }
   }
 
@@ -117,6 +126,14 @@ export default function QuizPage() {
     // Track answer when user finishes typing
     if (value.trim()) {
       await trackQuizAnswer({
+        step_number: 2,
+        question_type: 'location',
+        answer_data: { location: value.trim() }
+      })
+      
+      // Track with lead tracking service
+      await trackLeadQuizAnswer({
+        session_id: leadTrackingService['sessionId'],
         step_number: 2,
         question_type: 'location',
         answer_data: { location: value.trim() }
@@ -167,6 +184,9 @@ export default function QuizPage() {
       completed_at: new Date().toISOString(),
       current_step: totalSteps
     })
+
+    // Complete quiz session
+    await completeQuizSession()
 
     // Redirect to loading page with user data
     const params = new URLSearchParams({
@@ -298,6 +318,18 @@ export default function QuizPage() {
 
     // Track answer
     await trackQuizAnswer({
+      step_number: 3,
+      question_type: 'photo',
+      answer_data: { 
+        filename: file.name,
+        size: file.size,
+        type: file.type
+      }
+    })
+    
+    // Track with lead tracking service
+    await trackLeadQuizAnswer({
+      session_id: leadTrackingService['sessionId'],
       step_number: 3,
       question_type: 'photo',
       answer_data: { 
