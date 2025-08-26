@@ -6,7 +6,7 @@ import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { ArrowRight, Eye, ArrowLeft, MapPin, Navigation, Upload, X } from 'lucide-react'
 import { useRouter } from 'next/navigation'
-import { trackQuizAnswer, trackInteraction, trackFunnelStep, trackPageView, trackingService } from '@/lib/supabase-tracking'
+import { trackQuizAnswer, trackInteraction, trackFunnelStep, trackPageView } from '@/lib/supabase-tracking'
 import { searchTrackingService, trackSearchAnswer, trackSearchDropOff, completeSearchSession } from '@/lib/search-tracking'
 import { useSearchParams } from 'next/navigation'
 
@@ -179,7 +179,7 @@ export default function QuizPage() {
     })
 
     // Update session as completed
-    await trackingService.updateQuizSession({
+    await searchTrackingService.updateSearchSession({
       is_completed: true,
       completed_at: new Date().toISOString(),
       current_step: totalSteps
@@ -395,14 +395,11 @@ export default function QuizPage() {
   // Initialize tracking on component mount
   useEffect(() => {
     const initializeTracking = async () => {
-      // Create quiz session
-      await trackingService.createQuizSession({
+      // Create search session
+      await searchTrackingService.updateSearchSession({
         total_steps: totalSteps,
         current_step: currentStep
       })
-
-      // Track device info
-      await trackingService.trackDeviceInfo()
 
       // Track page view
       await trackPageView('/quiz', 'Quiz - Relationship Intel')

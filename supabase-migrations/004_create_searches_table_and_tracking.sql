@@ -1,32 +1,32 @@
--- Migration: Connect to Existing Searches Table
--- This migration modifies the existing Searches table to support lead tracking
+-- Migration: Create Searches Table and Tracking System
+-- This migration creates the searches table and all related tracking tables
 
--- First, let's see what columns exist in the Searches table
--- (This will be run manually in Supabase SQL Editor)
-
--- Add lead tracking columns to existing Searches table
-ALTER TABLE IF EXISTS searches 
-ADD COLUMN IF NOT EXISTS session_id TEXT,
-ADD COLUMN IF NOT EXISTS name TEXT,
-ADD COLUMN IF NOT EXISTS email TEXT,
-ADD COLUMN IF NOT EXISTS search_type TEXT DEFAULT 'partner',
-ADD COLUMN IF NOT EXISTS source_page TEXT DEFAULT 'home',
-ADD COLUMN IF NOT EXISTS user_agent TEXT,
-ADD COLUMN IF NOT EXISTS ip_address INET,
-ADD COLUMN IF NOT EXISTS referrer TEXT,
-ADD COLUMN IF NOT EXISTS utm_source TEXT,
-ADD COLUMN IF NOT EXISTS utm_medium TEXT,
-ADD COLUMN IF NOT EXISTS utm_campaign TEXT,
-ADD COLUMN IF NOT EXISTS current_step INTEGER DEFAULT 1,
-ADD COLUMN IF NOT EXISTS total_steps INTEGER DEFAULT 3,
-ADD COLUMN IF NOT EXISTS started_at TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
-ADD COLUMN IF NOT EXISTS last_activity_at TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
-ADD COLUMN IF NOT EXISTS completed_at TIMESTAMP WITH TIME ZONE,
-ADD COLUMN IF NOT EXISTS dropped_off_at TIMESTAMP WITH TIME ZONE,
-ADD COLUMN IF NOT EXISTS drop_off_step INTEGER,
-ADD COLUMN IF NOT EXISTS drop_off_reason TEXT,
-ADD COLUMN IF NOT EXISTS is_completed BOOLEAN DEFAULT FALSE,
-ADD COLUMN IF NOT EXISTS updated_at TIMESTAMP WITH TIME ZONE DEFAULT NOW();
+-- First, create the main searches table
+CREATE TABLE IF NOT EXISTS searches (
+    id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
+    session_id TEXT,
+    name TEXT,
+    email TEXT,
+    search_type TEXT DEFAULT 'partner',
+    source_page TEXT DEFAULT 'home',
+    user_agent TEXT,
+    ip_address INET,
+    referrer TEXT,
+    utm_source TEXT,
+    utm_medium TEXT,
+    utm_campaign TEXT,
+    current_step INTEGER DEFAULT 1,
+    total_steps INTEGER DEFAULT 3,
+    started_at TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
+    last_activity_at TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
+    completed_at TIMESTAMP WITH TIME ZONE,
+    dropped_off_at TIMESTAMP WITH TIME ZONE,
+    drop_off_step INTEGER,
+    drop_off_reason TEXT,
+    is_completed BOOLEAN DEFAULT FALSE,
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
+    updated_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
+);
 
 -- Add indexes for better performance
 CREATE INDEX IF NOT EXISTS idx_searches_session_id ON searches(session_id);
