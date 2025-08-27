@@ -98,7 +98,7 @@ export default function Home() {
                   </div>
                 </div>
                 <p className="text-gray-700 text-sm md:text-base leading-relaxed">
-                  "I was suspicious about my partner's behavior. This tool helped me find the truth. Now I can make informed decisions about my relationship."
+                  &ldquo;I was suspicious about my partner&apos;s behavior. This tool helped me find the truth. Now I can make informed decisions about my relationship.&rdquo;
                 </p>
               </div>
               
@@ -113,7 +113,7 @@ export default function Home() {
                   </div>
                 </div>
                 <p className="text-gray-700 text-sm md:text-base leading-relaxed">
-                  "The AI facial recognition is incredible. Found profiles I never knew existed. Peace of mind is priceless."
+                  &ldquo;The AI facial recognition is incredible. Found profiles I never knew existed. Peace of mind is priceless.&rdquo;
                 </p>
               </div>
               
@@ -128,7 +128,7 @@ export default function Home() {
                   </div>
                 </div>
                 <p className="text-gray-700 text-sm md:text-base leading-relaxed">
-                  "Finally, a tool that actually works! Found multiple hidden profiles across different platforms. Highly recommend."
+                  &ldquo;Finally, a tool that actually works! Found multiple hidden profiles across different platforms. Highly recommend.&rdquo;
                 </p>
               </div>
             </Marquee>
@@ -151,7 +151,7 @@ export default function Home() {
                   </div>
                 </div>
                 <p className="text-gray-700 leading-relaxed">
-                  "I was suspicious about my partner's behavior. This tool helped me find the truth. Now I can make informed decisions about my relationship."
+                  &ldquo;I was suspicious about my partner&apos;s behavior. This tool helped me find the truth. Now I can make informed decisions about my relationship.&rdquo;
                 </p>
               </div>
               
@@ -166,7 +166,7 @@ export default function Home() {
                   </div>
                 </div>
                 <p className="text-gray-700 leading-relaxed">
-                  "The AI facial recognition is incredible. Found profiles I never knew existed. Peace of mind is priceless."
+                  &ldquo;The AI facial recognition is incredible. Found profiles I never knew existed. Peace of mind is priceless.&rdquo;
                 </p>
               </div>
               
@@ -181,7 +181,7 @@ export default function Home() {
                   </div>
                 </div>
                 <p className="text-gray-700 leading-relaxed">
-                  "Finally, a tool that actually works! Found multiple hidden profiles across different platforms. Highly recommend."
+                  &ldquo;Finally, a tool that actually works! Found multiple hidden profiles across different platforms. Highly recommend.&rdquo;
                 </p>
               </div>
               

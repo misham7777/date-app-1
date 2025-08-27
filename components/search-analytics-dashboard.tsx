@@ -1,10 +1,10 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
-import { getSearchFunnelAnalytics, getSearchDropOffAnalysis, getSearchesWithProgress, getAllSearches } from '@/lib/search-tracking'
-import { Users, TrendingUp, TrendingDown, Clock, Target, Search } from 'lucide-react'
+import { getSearchFunnelAnalytics, getSearchDropOffAnalysis, getSearchesWithProgress } from '@/lib/search-tracking'
+import { TrendingDown, Clock, Target, Search } from 'lucide-react'
 
 interface SearchAnalyticsData {
   searches: Array<{
@@ -16,7 +16,11 @@ interface SearchAnalyticsData {
     is_completed: boolean
     current_step?: number
   }>
-  funnelAnalytics: any[]
+  funnelAnalytics: Array<{
+    step: string
+    count: number
+    percentage: number
+  }>
   dropOffs: Array<{
     step_name: string
     time_spent_seconds?: number
@@ -31,11 +35,7 @@ export function SearchAnalyticsDashboard() {
     end: new Date().toISOString().split('T')[0] // today
   })
 
-  useEffect(() => {
-    loadAnalytics()
-  }, [dateRange])
-
-  const loadAnalytics = async () => {
+  const loadAnalytics = useCallback(async () => {
     setLoading(true)
     try {
       const [funnelAnalytics, dropOffs, searches] = await Promise.all([
@@ -54,7 +54,11 @@ export function SearchAnalyticsDashboard() {
     } finally {
       setLoading(false)
     }
-  }
+  }, [dateRange])
+
+  useEffect(() => {
+    loadAnalytics()
+  }, [loadAnalytics])
 
   const totalSearches = data.searches.length
   const completedSearches = data.searches.filter(search => search.is_completed).length
@@ -144,7 +148,7 @@ export function SearchAnalyticsDashboard() {
           <CardContent>
             <div className="text-2xl font-bold">
               {data.dropOffs.length > 0 
-                ? Math.round(data.dropOffs.reduce((sum: number, dropOff: any) => sum + (dropOff.time_spent_seconds || 0), 0) / data.dropOffs.length)
+                                 ? Math.round(data.dropOffs.reduce((sum: number, dropOff: { step_name: string; time_spent_seconds?: number }) => sum + (dropOff.time_spent_seconds || 0), 0) / data.dropOffs.length)
                 : 0}s
             </div>
             <p className="text-xs text-muted-foreground">

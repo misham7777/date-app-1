@@ -8,6 +8,7 @@ import { Highlight } from "@/components/ui/hero-highlight";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { trackSearch, searchTrackingService } from "@/lib/search-tracking";
+import Image from "next/image";
 
 function Hero() {
   const [isVisible, setIsVisible] = useState(false);
@@ -107,9 +108,11 @@ function Hero() {
                         ? 'bg-pink-500' 
                         : 'bg-gray-200'
                     }`}>
-                      <img
+                      <Image
                         src="l1QD6KFgUXDpcVfAprHnTmoe70.avif"
                         alt="Woman"
+                        width={200}
+                        height={300}
                         className="w-full h-full object-cover"
                       />
                     </div>
@@ -139,9 +142,11 @@ function Hero() {
                         ? 'bg-blue-500' 
                         : 'bg-gray-200'
                     }`}>
-                      <img
+                      <Image
                         src="vg4dSvxo1lLXFbF9LkXHZFJJyYA.avif"
                         alt="Man"
+                        width={200}
+                        height={300}
                         className="w-full h-full object-cover"
                       />
                     </div>
