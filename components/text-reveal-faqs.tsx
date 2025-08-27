@@ -2,7 +2,6 @@
 
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion'
 import { Badge } from '@/components/ui/badge'
-import Link from 'next/link'
 import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
 
@@ -94,7 +93,7 @@ export default function FAQs() {
         >
           <div className="bg-white dark:bg-gray-900 rounded-2xl shadow-xl border border-gray-200 dark:border-gray-800 overflow-hidden">
             <Accordion type="single" collapsible className="w-full">
-              {faqItems.map((item, index) => (
+              {faqItems.map((item) => (
                 <motion.div
                   key={item.id}
                   variants={itemVariants}
