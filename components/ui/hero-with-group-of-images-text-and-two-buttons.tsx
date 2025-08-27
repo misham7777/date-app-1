@@ -5,7 +5,6 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
 import { HeroHighlight, Highlight } from "@/components/ui/hero-highlight";
-import Image from "next/image";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { trackSearch, searchTrackingService } from "@/lib/search-tracking";
@@ -108,11 +107,10 @@ function Hero() {
                         ? 'bg-pink-500' 
                         : 'bg-gray-200'
                     }`}>
-                      <Image
+                      <img
                         src="/l1QD6KFgUXDpcVfAprHnTmoe70.avif"
                         alt="Woman"
-                        fill
-                        className="object-cover"
+                        className="w-full h-full object-cover"
                       />
                     </div>
                     <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/50 to-transparent p-3">
@@ -141,11 +139,10 @@ function Hero() {
                         ? 'bg-blue-500' 
                         : 'bg-gray-200'
                     }`}>
-                      <Image
+                      <img
                         src="/vg4dSvxo1lLXFbF9LkXHZFJJyYA.avif"
                         alt="Man"
-                        fill
-                        className="object-cover"
+                        className="w-full h-full object-cover"
                       />
                     </div>
                     <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/50 to-transparent p-3">

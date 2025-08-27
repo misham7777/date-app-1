@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import Image from "next/image";
 
 import {
   Accordion,
@@ -96,11 +95,9 @@ const Feature197 = ({ features = defaultFeatures }: Feature197Props) => {
                     </p>
                     <div className="mt-3 md:mt-4 lg:hidden">
                       <div className="relative overflow-hidden rounded-xl shadow-lg">
-                        <Image
+                        <img
                           src={tab.image}
                           alt={tab.title}
-                          width={400}
-                          height={300}
                           className="w-full h-48 md:h-64 object-cover transition-all duration-500 hover:scale-105"
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
@@ -115,11 +112,9 @@ const Feature197 = ({ features = defaultFeatures }: Feature197Props) => {
             <div className="hidden lg:block">
               <div className="relative overflow-hidden rounded-2xl shadow-lg bg-white p-4">
                 <div className="relative overflow-hidden rounded-xl">
-                  <Image
+                  <img
                     src={activeImage}
                     alt="Feature preview"
-                    width={600}
-                    height={400}
                     className="w-full h-[400px] object-cover transition-all duration-700 ease-out hover:scale-105"
                     style={{
                       transform: `scale(${activeTabId === 1 ? 1 : activeTabId === 2 ? 1.05 : 1.1})`,
