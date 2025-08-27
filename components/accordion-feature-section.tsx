@@ -24,21 +24,21 @@ const defaultFeatures: FeatureItem[] = [
   {
     id: 1,
     title: "Location & Time Tracking",
-    image: "/tHzBF9VtTHyDQVb6yHGsTjVms.avif",
+    image: "tHzBF9VtTHyDQVb6yHGsTjVms.avif",
     description:
       "Just like the map shows activity from 2 days ago, our platform captures real-time location data when your partner uses dating apps. Our AI analyzes their movement patterns, timestamps, and geographic activity to provide concrete evidence of their online dating behavior.",
   },
   {
     id: 2,
     title: "Active Profile Detection",
-    image: "/zS8PvTIANwCEPMbE5AiFHxFqbI8.avif",
+    image: "zS8PvTIANwCEPMbE5AiFHxFqbI8.avif",
     description:
       "Our AI facial recognition technology instantly identifies active dating profiles, just like finding Mandy's profile that was active 8 hours ago. Get real-time alerts when we discover their hidden accounts with exact timestamps, locations, and profile details.",
   },
   {
     id: 3,
     title: "Subscription Level Detection",
-    image: "/3ab3Z01bd2hmmiDPvu2ESnFp1YA.avif",
+    image: "3ab3Z01bd2hmmiDPvu2ESnFp1YA.avif",
     description:
       "Discover exactly how invested they are in dating apps. Our system detects whether they're using free accounts or paying for premium features like Tinder Platinum, Gold, or Plus subscriptions. Premium subscriptions indicate serious dating intentions and higher activity levels.",
   },

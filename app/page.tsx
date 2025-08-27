@@ -33,7 +33,7 @@ export default function Home() {
                 title: "Discover their digital footprint like never before.",
                 description: "Find out if their account is still active, including the last time and location they used dating platforms. Get real proof of their online dating activity with timestamps and location data.",
                 buttonText: "Start Investigation",
-                imageSrc: "/hero-images/profile-1.png",
+                imageSrc: "hero-images/profile-1.png",
                 imageAlt: "Multi-platform scanning interface",
               },
             },
@@ -46,7 +46,7 @@ export default function Home() {
                 title: "See when and where they're active on dating apps.",
                 description: "Find out if their account is still active, including the last time and location they used dating platforms. Get real proof of their online dating activity with timestamps and location data.",
                 buttonText: "Start Investigation",
-                imageSrc: "/hero-images/profile-2.png",
+                imageSrc: "hero-images/profile-2.png",
                 imageAlt: "AI facial recognition interface",
               },
             },
@@ -59,7 +59,7 @@ export default function Home() {
                 title: "Upload any photo to find their hidden profiles.",
                 description: "Our AI scans their face across 50+ dating platforms to find matching profiles, even when they use fake names or different photos. Get complete results in minutes.",
                 buttonText: "Start Investigation",
-                imageSrc: "/hero-images/map-interface.png",
+                imageSrc: "hero-images/map-interface.png",
                 imageAlt: "Activity tracking interface",
               },
             },
@@ -211,19 +211,19 @@ export default function Home() {
             {
               id: 1,
               title: "Location & Time Tracking",
-              image: "/tHzBF9VtTHyDQVb6yHGsTjVms.avif",
+              image: "tHzBF9VtTHyDQVb6yHGsTjVms.avif",
               description: "Just like the map shows activity from 2 days ago, our platform captures real-time location data when your partner uses dating apps. Our AI analyzes their movement patterns, timestamps, and geographic activity to provide concrete evidence of their online dating behavior.",
             },
             {
               id: 2,
               title: "Active Profile Detection",
-              image: "/zS8PvTIANwCEPMbE5AiFHxFqbI8.avif",
+              image: "zS8PvTIANwCEPMbE5AiFHxFqbI8.avif",
               description: "Our AI facial recognition technology instantly identifies active dating profiles, just like finding Mandy's profile that was active 8 hours ago. Get real-time alerts when we discover their hidden accounts with exact timestamps, locations, and profile details.",
             },
             {
               id: 3,
               title: "Subscription Level Detection",
-              image: "/3ab3Z01bd2hmmiDPvu2ESnFp1YA.avif",
+              image: "3ab3Z01bd2hmmiDPvu2ESnFp1YA.avif",
               description: "Discover exactly how invested they are in dating apps. Our system detects whether they're using free accounts or paying for premium features like Tinder Platinum, Gold, or Plus subscriptions. Premium subscriptions indicate serious dating intentions and higher activity levels.",
             },
           ]}
@@ -240,7 +240,7 @@ export default function Home() {
 
       <AnimatedSection animationType="fade-up" delay={600}>
         <Feature2 
-          imageSrc="/hp-gma-video.webp"
+          imageSrc="hp-gma-video.webp"
           imageAlt="Good Morning America feature about dating platform"
         />
       </AnimatedSection>

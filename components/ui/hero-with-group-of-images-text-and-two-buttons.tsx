@@ -108,7 +108,7 @@ function Hero() {
                         : 'bg-gray-200'
                     }`}>
                       <img
-                        src="/l1QD6KFgUXDpcVfAprHnTmoe70.avif"
+                        src="l1QD6KFgUXDpcVfAprHnTmoe70.avif"
                         alt="Woman"
                         className="w-full h-full object-cover"
                       />
@@ -140,7 +140,7 @@ function Hero() {
                         : 'bg-gray-200'
                     }`}>
                       <img
-                        src="/vg4dSvxo1lLXFbF9LkXHZFJJyYA.avif"
+                        src="vg4dSvxo1lLXFbF9LkXHZFJJyYA.avif"
                         alt="Man"
                         className="w-full h-full object-cover"
                       />
