@@ -7,7 +7,7 @@ import { useState, useEffect } from "react";
 export default function NavBarWrapper() {
   const [isMobile, setIsMobile] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isScrolled, setIsScrolled] = useState(false);
+
   const [selectedLanguage, setSelectedLanguage] = useState('EN');
 
   const navItems = [
@@ -38,20 +38,15 @@ export default function NavBarWrapper() {
       setIsMobile(mobile);
     };
 
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-    };
+
 
     // Set initial state immediately
     handleResize();
-    handleScroll();
     
     window.addEventListener("resize", handleResize);
-    window.addEventListener("scroll", handleScroll);
     
     return () => {
       window.removeEventListener("resize", handleResize);
-      window.removeEventListener("scroll", handleScroll);
     };
   }, []);
 

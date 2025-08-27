@@ -2,7 +2,7 @@
 
 import { useSearchParams } from 'next/navigation'
 import { motion } from 'framer-motion'
-import { Eye, CheckCircle } from 'lucide-react'
+import { CheckCircle } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import Link from 'next/link'
 import { trackPageView, trackInteraction, trackFunnelStep } from '@/lib/supabase-tracking'

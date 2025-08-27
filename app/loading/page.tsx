@@ -9,12 +9,12 @@ import { trackLoadingEvent, trackFunnelStep, trackPageView } from '@/lib/supabas
 function LoadingContent() {
   const router = useRouter()
   const searchParams = useSearchParams()
-  const [percentage, setPercentage] = useState(97)
+  const [percentage] = useState(97)
   const [profileCount, setProfileCount] = useState(0)
   const [progressBar, setProgressBar] = useState(0)
   const [currentMessage, setCurrentMessage] = useState(0)
   const [isLoading, setIsLoading] = useState(true)
-  const [eyeScale, setEyeScale] = useState(1)
+
   const [countdown, setCountdown] = useState(10)
 
   // Get quiz data from URL params
@@ -95,10 +95,7 @@ function LoadingContent() {
       setCurrentMessage(prev => (prev + 1) % loadingMessages.length)
     }, 2000)
 
-    // Eye pulsing animation
-    const eyeInterval = setInterval(() => {
-      setEyeScale(prev => prev === 1 ? 1.1 : 1)
-    }, 1000)
+
 
     // Countdown timer
     const countdownInterval = setInterval(() => {

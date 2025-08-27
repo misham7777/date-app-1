@@ -196,7 +196,7 @@ export default function Home() {
                   </div>
                 </div>
                 <p className="text-gray-700 leading-relaxed">
-                  "The multi-platform scanning feature is a game-changer. Found profiles on platforms I didn't even know existed."
+                  &ldquo;The multi-platform scanning feature is a game-changer. Found profiles on platforms I didn&apos;t even know existed.&rdquo;
                 </p>
               </div>
             </Marquee>

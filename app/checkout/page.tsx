@@ -3,7 +3,7 @@
 import { useState, useEffect, Suspense } from 'react'
 import { useSearchParams, useRouter } from 'next/navigation'
 import { motion } from 'framer-motion'
-import { Eye, Clock, Lock, CheckCircle, Flame, MapPin, CreditCard, Building, DollarSign, Smartphone } from 'lucide-react'
+import { Clock, Lock, CheckCircle, Flame, CreditCard, Building, DollarSign, Smartphone } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Card, CardContent } from '@/components/ui/card'

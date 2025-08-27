@@ -4,10 +4,10 @@ import { useState, useEffect, useRef, Suspense } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
-import { ArrowRight, Eye, ArrowLeft, MapPin, Navigation, Upload, X } from 'lucide-react'
+import { ArrowRight, Eye, MapPin, Navigation, X } from 'lucide-react'
 import { useRouter } from 'next/navigation'
 import { trackQuizAnswer, trackInteraction, trackFunnelStep, trackPageView } from '@/lib/supabase-tracking'
-import { searchTrackingService, trackSearchAnswer, trackSearchDropOff, completeSearchSession } from '@/lib/search-tracking'
+import { searchTrackingService, trackSearchAnswer, completeSearchSession } from '@/lib/search-tracking'
 import { useSearchParams } from 'next/navigation'
 
 // TypeScript interfaces for Mapbox API
@@ -43,12 +43,9 @@ function QuizContent() {
     photo: null as File | null,
     coordinates: { lat: 52.153794, lng: 21.078421 }
   })
-  const [isValidAge, setIsValidAge] = useState(false)
   const [locationSuggestions, setLocationSuggestions] = useState<MapboxFeature[]>([])
   const [showSuggestions, setShowSuggestions] = useState(false)
-  const [uploadState, setUploadState] = useState<'default' | 'dragOver' | 'uploaded' | 'error'>('default')
   const [photoPreview, setPhotoPreview] = useState<string | null>(null)
-  const [dragCounter, setDragCounter] = useState(0)
   const [mapLoading, setMapLoading] = useState(false)
   const [uploadError, setUploadError] = useState<string | null>(null)
   const [isDragOver, setIsDragOver] = useState(false)
@@ -56,7 +53,6 @@ function QuizContent() {
 
   // Get pre-filled name from URL params
   const preFilledName = searchParams.get('name') || ''
-  const searchType = searchParams.get('searchType') || 'partner'
 
   // Initialize answers with pre-filled name
   useEffect(() => {
@@ -79,19 +75,7 @@ function QuizContent() {
     }))
   }
 
-  const handleNameChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
-    const value = e.target.value
-    setAnswers(prev => ({ ...prev, name: value }))
 
-    // Track answer when user finishes typing
-    if (value.trim()) {
-      await trackQuizAnswer({
-        step_number: 1,
-        question_type: 'name',
-        answer_data: { name: value.trim() }
-      })
-    }
-  }
 
   const handleAgeChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value
@@ -99,7 +83,6 @@ function QuizContent() {
     const valid = age >= 18 && age <= 99
     
     setAnswers(prev => ({ ...prev, age: value }))
-    setIsValidAge(valid)
 
     // Track answer when valid
     if (valid) {
@@ -277,11 +260,7 @@ function QuizContent() {
     }
   }
 
-  // Handle location input changes
-  const handleLocationChange = async (value: string) => {
-    handleInputChange('location', value)
-    await searchLocations(value)
-  }
+
 
   // Photo upload functions
   const validateFile = (file: File): string | null => {
