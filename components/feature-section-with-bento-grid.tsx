@@ -3,6 +3,8 @@ import { cn } from "@/lib/utils";
 import { motion } from "framer-motion";
 import { IconBrandYoutubeFilled } from "@tabler/icons-react";
 import Link from "next/link";
+import { useEffect, useRef } from "react";
+import createGlobe from "cobe";
 
 export function FeaturesSectionWithBentoGrid() {
   const features = [

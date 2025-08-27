@@ -1,7 +1,7 @@
 "use client";
 
 import { MoveUpRight } from "lucide-react";
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState } from "react";
 
 function Stats() {
   const [isVisible, setIsVisible] = useState(false);
