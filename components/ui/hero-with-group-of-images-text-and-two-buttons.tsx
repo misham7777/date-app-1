@@ -1,10 +1,10 @@
 "use client";
 
-import { MoveRight, PhoneCall, Search, User, Mail } from "lucide-react";
+import { MoveRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
-import { HeroHighlight, Highlight } from "@/components/ui/hero-highlight";
+import { Highlight } from "@/components/ui/hero-highlight";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { trackSearch, searchTrackingService } from "@/lib/search-tracking";
@@ -27,7 +27,7 @@ function Hero() {
     if (formData.name.trim()) {
       try {
         // Track search
-        const searchId = await trackSearch({
+        await trackSearch({
           session_id: searchTrackingService['sessionId'],
           name: formData.name.trim(),
           email: formData.email || undefined,
